@@ -96,12 +96,12 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .reserve strong{color:#fff}
 /* association */
 .values{display:flex;flex-wrap:wrap;gap:24px;margin-top:8px}
-.values>div{flex:1 1 220px}
+.values>div{flex:1 1 170px}
 .values h3{font-size:20px;color:var(--pink);margin-bottom:6px}
 .values p{margin:0;color:var(--muted);font-size:15px}
 .team{width:100%;max-width:820px;height:auto;border-radius:12px}
 .members{display:flex;flex-wrap:wrap;gap:24px}
-.member{flex:1 1 220px;display:flex;flex-direction:column;gap:6px}
+.member{flex:0 1 240px;display:flex;flex-direction:column;gap:6px}
 .member img{aspect-ratio:1/1;object-fit:cover;border-radius:16px;width:100%}
 .member span{color:var(--muted);font-size:14px}
 .contact{display:flex;flex-wrap:wrap;gap:24px 48px}

@@ -1,12 +1,16 @@
 {
   "title": "L'association",
-  "intro": "Une troupe d'improvisation installée à Villennes-sur-Seine, portée par des bénévoles.",
-  "history": "À L'Alibi du Mardi, on aime les histoires qui naissent de rien, les personnages improbables et les moments qu'on ne pourra jamais rejouer à l'identique. Notre association fait vivre le théâtre d'improvisation à Villennes-sur-Seine à travers des ateliers, des spectacles et des projets de création collective.",
+  "intro": "Une troupe d'improvisation née à Villennes-sur-Seine il y a sept ans, entre amis, et qui n'a cessé de grandir depuis.",
+  "history": "L'Alibi du Mardi est né il y a sept ans, d'une bande d'amis qui avait envie de jouer ensemble. Depuis, l'association n'a fait que grossir : de nouveaux visages à chaque rentrée, des ateliers pour tous les niveaux, un public de plus en plus nombreux à nos soirées.\n\nOn s'amuse, et c'est même la raison d'être de tout ça. Mais pour continuer à s'amuser, l'improvisation doit être abordée avec sérieux : c'est un vrai travail, fait d'écoute, d'entraînement et de rigueur. C'est à cette condition qu'on peut inventer des histoires sur le moment et présenter au public des spectacles de qualité.\n\nNos ateliers sont encadrés par deux coachs professionnels, Anthony pour l'improvisation et Lilou pour le théâtre. Ils font vivre l'Alibi à travers des ateliers, des spectacles et des projets de création collective, à Villennes-sur-Seine.",
   "founded": "",
   "values": [
     {
       "title": "Plaisir de jouer",
       "text": "Jouer pour le plaisir, sur scène comme en atelier."
+    },
+    {
+      "title": "Exigence",
+      "text": "Pour continuer à s'amuser, on travaille : l'improvisation est un vrai travail."
     },
     {
       "title": "Écoute",
@@ -23,6 +27,15 @@
   ],
   "team_photo": "/images/chanteloup/equipe.jpg",
   "team_photo_alt": "Les membres de la troupe L'Alibi du Mardi, en tee-shirts noirs, riant ensemble",
-  "team": [],
+  "team": [
+    {
+      "name": "Anthony",
+      "role": "Coach professionnel, improvisation"
+    },
+    {
+      "name": "Lilou",
+      "role": "Coach professionnelle, théâtre"
+    }
+  ],
   "address": ""
 }
