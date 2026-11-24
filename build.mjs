@@ -133,10 +133,11 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     return `<div class="card card--big"><span class="kicker">${esc(g.subtitle)}</span><h3>${esc(g.name)}</h3><ul>${g.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul><div class="card__infos">${infos}</div></div>`;
   };
   const body = pagehead(ateliers.title, ateliers.intro)
-    + section(`<h2>${esc(ateliers.groups_title || "Nos ateliers")}</h2><div class="cards">${ateliers.groups.map(group).join("")}</div>${ateliers.practical_note ? `<p class="lead">${esc(ateliers.practical_note)}</p>` : ""}`, "paper")
+    + section(`<h2>${esc(ateliers.groups_title)}</h2>${ateliers.groups_text ? `<p class="lead">${esc(ateliers.groups_text)}</p>` : ""}<div class="cards">${ateliers.groups.map(group).join("")}</div>`, "paper")
+    + (ateliers.kids ? section(`<h2>${esc(ateliers.kids_title)}</h2>${ateliers.kids_text ? `<p class="lead">${esc(ateliers.kids_text)}</p>` : ""}<div class="cards">${group(ateliers.kids)}</div>${ateliers.practical_note ? `<p class="lead">${esc(ateliers.practical_note)}</p>` : ""}`, "white") : "")
     + section(`<span class="eyebrow">Expérimenter</span><h2>${esc(ateliers.lab_title)}</h2><p class="lead lead--light">${esc(ateliers.lab_text)}</p>${ateliers.lab_details ? `<p class="lead lead--light">${esc(ateliers.lab_details)}</p>` : ""}`, "deep")
     + section(`<h2>S'inscrire</h2><p class="lead">${esc(ateliers.register_text)}</p>${ateliers.register_details ? `<p class="lead">${esc(ateliers.register_details)}</p>` : ""}<p><a class="btn btn--primary" href="${esc(mailto("Inscription aux ateliers d'improvisation", "Bonjour,\n\nJe souhaite m'inscrire à l'atelier (improvisation débutants / avancés, théâtre enfants) :\n\nNom et prénom :\nTéléphone :\nUn mot sur vous (facultatif) :\n"))}">Écrire pour s'inscrire</a></p><p class="small">Ou directement à ${esc(mail)}</p>`, "white", "inscription");
-  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre pour enfants.", cur: "Ateliers", body });
+  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre classique pour enfants.", cur: "Ateliers", body });
 }
 
 // ---------- SPECTACLES

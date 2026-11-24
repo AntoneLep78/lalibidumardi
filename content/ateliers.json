@@ -1,14 +1,14 @@
 {
   "title": "Les ateliers",
-  "intro": "Jamais monté sur scène ? Déjà improvisateur ? On apprend à construire ensemble, à se surprendre et à faire confiance aux propositions des autres, dans un esprit d'écoute, de jeu et de bienveillance. Les ateliers sont animés par des passionnés de théâtre, de pratique et d'enseignement professionnels et amateurs.",
+  "intro": "L'Alibi du Mardi est une association villennoise créée et dirigée par des passionnés de théâtre classique ou d'improvisation, avec une grande expérience de pratique et d'enseignement, professionnels et amateurs. Les ateliers ont tous lieu à la Maison des associations.",
   "groups": [
     {
-      "name": "Improvisation débutants",
-      "subtitle": "Avec Anthony, pour commencer, même grands débutants",
+      "name": "Débutants",
+      "subtitle": "Coach Anthony, atelier hebdo d'improvisation",
       "points": [
-        "Lâcher prise, confiance en soi et dans le groupe, prise de parole en public, imagination",
-        "Créer une histoire en suivant la mécanique du récit, donner vie à des personnages en une fraction de seconde",
-        "Construire des décors avec précision, fictifs mais bien réels, et vivre des aventures dans l'instant, à l'instinct"
+        "Créer une histoire en suivant la mécanique du récit",
+        "Donner vie à des personnages en une fraction de seconde",
+        "Construire des décors avec précision, fictifs mais bien réels"
       ],
       "infos": [
         "Groupe 1 : le mardi, 19h30 - 21h",
@@ -16,8 +16,8 @@
       ]
     },
     {
-      "name": "Improvisation avancés",
-      "subtitle": "Avec Anthony, pour aller plus loin",
+      "name": "Avancés",
+      "subtitle": "Coach Anthony, atelier hebdo d'improvisation",
       "points": [
         "Construction de scènes, placement scénique et dotation",
         "Catégories de cabaret et contraintes surprises",
@@ -26,28 +26,31 @@
       "infos": [
         "Le mercredi, 21h - 23h"
       ]
-    },
-    {
-      "name": "Théâtre enfants",
-      "subtitle": "Avec Lilou, théâtre classique",
-      "points": [
-        "Jeu d'acteur et technique",
-        "Personnages, caractérisation, émotions et états d'âme, relations, analyse de textes",
-        "Une pièce de théâtre présentée en fin d'année"
-      ],
-      "infos": [
-        "Le mercredi",
-        "Primaires : 10h - 11h30",
-        "Collège 1 (6e et 5e) : 15h - 16h30",
-        "Collège 2 (4e et 3e) : 16h30 - 18h"
-      ]
     }
   ],
-  "practical_note": "Tous les ateliers ont lieu à la Maison des associations. Cotisation annuelle : 310 € pour tous les ateliers.",
+  "practical_note": "",
   "lab_title": "Le Lab de l'Alibi",
   "lab_text": "Notre espace d'expérimentation : un endroit pour essayer de nouveaux formats, tester des idées et imaginer les spectacles de demain, en duo, en trio ou en collectif. Ouvert à celles et ceux qui ont envie de participer à cette démarche.",
   "lab_details": "",
   "register_text": "Écrivez-nous pour connaître les modalités de la saison en cours et vous inscrire.",
-  "register_details": "",
-  "groups_title": "Nos ateliers"
+  "register_details": "Cotisation annuelle : 310 € pour tous les ateliers.",
+  "groups_title": "Initiez-vous à l'improvisation théâtrale !",
+  "groups_text": "Lâcher prise, confiance en soi et dans le groupe, prise de parole en public, imagination : venez découvrir de nouveaux talents jusqu'alors inexplorés. Le coach vous guide pas à pas, à votre rythme, vers de nouveaux terrains de jeu, pour créer et vivre des aventures dans l'instant, à l'instinct.",
+  "kids_title": "Les ateliers théâtre « classiques »",
+  "kids_text": "L'Alibi du Mardi propose également des ateliers enfants de théâtre classique. Ils aboutissent à une représentation du travail réalisé pendant l'année, sous la forme d'une pièce de théâtre.",
+  "kids": {
+    "name": "Atelier enfants",
+    "subtitle": "Coach Lilou, atelier hebdo",
+    "points": [
+      "La notion de jeu d'acteur et la technique",
+      "Les personnages et leur caractérisation, leurs émotions et états d'âme, leurs relations",
+      "L'analyse de textes"
+    ],
+    "infos": [
+      "Le mercredi",
+      "Primaires : 10h - 11h30",
+      "Collège 1 (6e et 5e) : 15h - 16h30",
+      "Collège 2 (4e et 3e) : 16h30 - 18h"
+    ]
+  }
 }

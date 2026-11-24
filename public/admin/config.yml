@@ -80,7 +80,8 @@ collections:
         fields:
           - {label: "Titre", name: title, widget: string}
           - {label: "Introduction", name: intro, widget: text}
-          - {label: "Titre de la section des groupes", name: groups_title, widget: string, required: false}
+          - {label: "Improvisation : titre de la section", name: groups_title, widget: string}
+          - {label: "Improvisation : texte", name: groups_text, widget: text, required: false}
           - label: "Groupes"
             name: groups
             widget: list
@@ -90,7 +91,17 @@ collections:
               - {label: "Sous-titre", name: subtitle, widget: string}
               - {label: "Contenu des séances", name: points, widget: list, field: {label: Point, name: point, widget: string}}
               - {label: "Infos pratiques (jour, horaires, lieu, tarif : une ligne chacun)", name: infos, widget: list, required: false, field: {label: Info, name: info, widget: string}}
-          - {label: "Note pratique (sous les groupes)", name: practical_note, widget: string, required: false}
+          - {label: "Théâtre classique : titre de la section", name: kids_title, widget: string}
+          - {label: "Théâtre classique : texte", name: kids_text, widget: text, required: false}
+          - label: "Théâtre classique : atelier"
+            name: kids
+            widget: object
+            fields:
+              - {label: "Nom", name: name, widget: string}
+              - {label: "Sous-titre (coach)", name: subtitle, widget: string}
+              - {label: "Contenu des séances", name: points, widget: list, field: {label: Point, name: point, widget: string}}
+              - {label: "Infos pratiques (une ligne chacune)", name: infos, widget: list, required: false, field: {label: Info, name: info, widget: string}}
+          - {label: "Note pratique (cotisation...)", name: practical_note, widget: string, required: false}
           - {label: "Lab : titre", name: lab_title, widget: string}
           - {label: "Lab : texte", name: lab_text, widget: text}
           - {label: "Lab : jour et modalités", name: lab_details, widget: string, required: false}
