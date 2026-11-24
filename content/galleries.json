@@ -92,6 +92,21 @@
         "/images/merci-2025-11.jpg"
       ],
       "crop": false
+    },
+    {
+      "id": "match-paris-impro-2026-05",
+      "title": "Le match contre Paris Impro en photos",
+      "intro": "",
+      "alt": "Match d'improvisation L'Alibi du Mardi contre Paris Impro : l'arbitre en maillot rayé entre les deux équipes",
+      "slideshow": false,
+      "background": "ink",
+      "photos": [
+        "/images/match-2026-05/01.jpg",
+        "/images/match-2026-05/02.jpg",
+        "/images/match-2026-05/03.jpg",
+        "/images/match-2026-05/04.jpg"
+      ],
+      "crop": false
     }
   ]
 }

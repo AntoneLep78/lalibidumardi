@@ -35,6 +35,18 @@
       "show_next_date": false,
       "gallery": "",
       "background": "paper"
+    },
+    {
+      "id": "match-paris-impro",
+      "kicker": "Match d'improvisation · vendredi 29 mai 2026",
+      "title": "L'Alibi du Mardi contre Paris Impro",
+      "poster": "/images/affiches/match-2026-05.jpg",
+      "poster_alt": "Affiche du match d'improvisation L'Alibi contre Paris Impro",
+      "text": "Deux troupes face à face sur scène : L'Alibi du Mardi a reçu Paris Impro pour un match d'improvisation. Arbitre en chemise rayée, tableau d'affichage, maillots d'équipe et barrières à chaînes : tout y est, pour un affrontement où l'on joue pour de faux et où l'on rit pour de vrai.\n\nLes équipes s'affrontent autour de catégories et de contraintes imposées, et c'est le public qui fait vivre la rencontre.",
+      "credits": "Vendredi 29 mai 2026 · 20h30 · Salle des Arts · Entrée 5 €",
+      "show_next_date": false,
+      "gallery": "match-paris-impro-2026-05",
+      "background": "white"
     }
   ]
 }
