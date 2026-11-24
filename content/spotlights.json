@@ -1,0 +1,28 @@
+{
+  "spotlights": [
+    {
+      "id": "la-seance",
+      "kicker": "",
+      "title": "La Séance",
+      "poster": "/images/affiches/la-seance-2026-01.jpg",
+      "poster_alt": "Affiche de La Séance : un fauteuil en cuir et un lampadaire dans la fumée",
+      "text": "Un praticien et son patient, une seule pièce, une heure en temps réel. Le public choisit la nature de la séance (thérapie, hypnose, médiumnité, coaching...) et le sujet qui amène le patient. Tout le reste s'invente sur le moment.\n\nQuand le patient évoque un proche, un souvenir ou une peur, le praticien en devient le personnage et la scène du passé surgit, avant de revenir au cabinet. Un spectacle sincère, drôle et touchant, porté par le duo.",
+      "credits": "**De et avec Anthony Lepinay**, invité : **Léandre Philippon**.\nSalle des Arts, Villennes-sur-Seine · 20h30 · Entrée 8 € · Réservation par e-mail · Durée environ 1 heure.",
+      "show_next_date": true,
+      "gallery": "la-seance-2026-01",
+      "background": "white"
+    },
+    {
+      "id": "crossings",
+      "kicker": "Spectacle totalement improvisé · 1h30",
+      "title": "Crossings, comment ça marche ?",
+      "poster": "/images/affiches/crossings.jpg",
+      "poster_alt": "Affiche de Crossings : quand l'extraordinaire se tisse dans l'ordinaire",
+      "text": "Huit comédiens, huit personnages définis par le public : un âge, un métier, un trait de caractère, gardés pendant tout le spectacle. Les scènes s'enchaînent à deux personnages seulement, de 1 à 4 minutes, et chaque duo ne se croise qu'une seule fois. Quand tous se sont rencontrés, ils se retrouvent pour une scène finale qui clôt l'histoire.\n\nDes destins qui s'entremêlent, et l'extraordinaire qui se tisse dans l'ordinaire. Rythmé par des percussions.",
+      "credits": "",
+      "show_next_date": false,
+      "gallery": "",
+      "background": "white"
+    }
+  ]
+}

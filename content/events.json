@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "title": "Cabaret d'impro",
+      "date_label": "Vendredi 16 octobre 2026",
+      "details": "20h30 · Salle des Arts · 5 €",
+      "poster": "/images/affiches/cabaret-2026-10.jpg",
+      "alt": "Affiche du cabaret d'improvisation du vendredi 16 octobre 2026"
+    },
+    {
+      "title": "Match contre Paris Impro",
+      "date_label": "Vendredi 29 mai 2026",
+      "details": "20h30 · Salle des Arts · 5 €",
+      "poster": "/images/affiches/match-2026-05.jpg",
+      "alt": "Affiche du match d'improvisation L'Alibi contre Paris Impro"
+    },
+    {
+      "title": "La Séance",
+      "date_label": "17 janvier 2026",
+      "details": "20h30 · Salle des Arts · 8 €",
+      "poster": "/images/affiches/la-seance-2026-01.jpg",
+      "alt": "Affiche du spectacle La Séance, 17 janvier 2026"
+    },
+    {
+      "title": "Cabaret, saison 2",
+      "date_label": "Vendredi 28 novembre 2025",
+      "details": "20h30 · Salle des Arts · 5 €",
+      "poster": "/images/affiches/cabaret-2025-11.jpg",
+      "alt": "Affiche du cabaret d'improvisation, saison 2"
+    },
+    {
+      "title": "Cabaret d'impro",
+      "date_label": "Samedi 28 juin 2025",
+      "details": "20h30 · Salle des Arts · 5 €",
+      "poster": "/images/affiches/cabaret-2025-06.jpg",
+      "alt": "Affiche du cabaret d'improvisation du samedi 28 juin 2025"
+    },
+    {
+      "title": "Crossings",
+      "date_label": "1er mai et 1er juin",
+      "details": "18h · Salle des Arts · Gratuit sur réservation",
+      "poster": "/images/affiches/crossings.jpg",
+      "alt": "Affiche de Crossings, spectacle improvisé"
+    },
+    {
+      "title": "The Cruise",
+      "date_label": "17 février",
+      "details": "20h30 · Salle des Arts · 5 €",
+      "poster": "/images/affiches/the-cruise.jpg",
+      "alt": "Affiche de The Cruise : qui a dit que la croisière allait s'amuser ?"
+    },
+    {
+      "title": "Shuffle",
+      "date_label": "Dimanche 17 novembre 2024",
+      "details": "18h · Salle des Arts · 5 €",
+      "poster": "/images/affiches/shuffle-2024-11.jpg",
+      "alt": "Affiche de Shuffle : 2 histoires, 8 personnages, 1000 possibilités"
+    },
+    {
+      "title": "Festival d'un week-end",
+      "date_label": "1er et 2 juin 2024",
+      "details": "Salle des Arts · Entrée gratuite",
+      "poster": "/images/affiches/festival-2024-06.jpg",
+      "alt": "Affiche du festival de théâtre L'Alibi d'un week-end, 1er et 2 juin 2024"
+    }
+  ]
+}

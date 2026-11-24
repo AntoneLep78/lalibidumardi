@@ -1,0 +1,97 @@
+{
+  "galleries": [
+    {
+      "id": "cabaret-2026-10",
+      "title": "Le cabaret du 16 octobre 2026 en photos",
+      "intro": "Environ 100 spectateurs ce soir-là, un record d'affluence pour la troupe.",
+      "alt": "Cabaret du 16 octobre : scène d'improvisation",
+      "slideshow": true,
+      "background": "ink",
+      "photos": [
+        "/images/cabaret-2026-10/01.jpg",
+        "/images/cabaret-2026-10/02.jpg",
+        "/images/cabaret-2026-10/03.jpg",
+        "/images/cabaret-2026-10/04.jpg",
+        "/images/cabaret-2026-10/05.jpg",
+        "/images/cabaret-2026-10/06.jpg",
+        "/images/cabaret-2026-10/07.jpg",
+        "/images/cabaret-2026-10/08.jpg",
+        "/images/cabaret-2026-10/09.jpg",
+        "/images/cabaret-2026-10/10.jpg",
+        "/images/cabaret-2026-10/11.jpg",
+        "/images/cabaret-2026-10/12.jpg",
+        "/images/cabaret-2026-10/13.jpg",
+        "/images/cabaret-2026-10/14.jpg",
+        "/images/cabaret-2026-10/15.jpg",
+        "/images/cabaret-2026-10/16.jpg",
+        "/images/cabaret-2026-10/17.jpg",
+        "/images/cabaret-2026-10/18.jpg",
+        "/images/cabaret-2026-10/19.jpg",
+        "/images/cabaret-2026-10/20.jpg",
+        "/images/cabaret-2026-10/21.jpg",
+        "/images/cabaret-2026-10/22.jpg",
+        "/images/cabaret-2026-10/23.jpg",
+        "/images/cabaret-2026-10/24.jpg",
+        "/images/cabaret-2026-10/25.jpg",
+        "/images/cabaret-2026-10/26.jpg",
+        "/images/cabaret-2026-10/27.jpg",
+        "/images/cabaret-2026-10/28.jpg",
+        "/images/cabaret-2026-10/29.jpg",
+        "/images/cabaret-2026-10/30.jpg",
+        "/images/cabaret-2026-10/31.jpg",
+        "/images/cabaret-2026-10/32.jpg"
+      ],
+      "crop": true
+    },
+    {
+      "id": "la-seance-2026-01",
+      "title": "La Séance en photos (représentation du 17 janvier 2026)",
+      "intro": "",
+      "alt": "La Séance : scène d'improvisation entre le patient et le praticien",
+      "slideshow": true,
+      "background": "ink",
+      "photos": [
+        "/images/la-seance-2026-01/01.jpg",
+        "/images/la-seance-2026-01/02.jpg",
+        "/images/la-seance-2026-01/03.jpg",
+        "/images/la-seance-2026-01/04.jpg",
+        "/images/la-seance-2026-01/05.jpg",
+        "/images/la-seance-2026-01/06.jpg",
+        "/images/la-seance-2026-01/07.jpg",
+        "/images/la-seance-2026-01/08.jpg",
+        "/images/la-seance-2026-01/09.jpg",
+        "/images/la-seance-2026-01/10.jpg",
+        "/images/la-seance-2026-01/11.jpg",
+        "/images/la-seance-2026-01/12.jpg"
+      ],
+      "crop": true
+    },
+    {
+      "id": "chanteloup",
+      "title": "Le cabaret à Chanteloup-les-Vignes",
+      "intro": "",
+      "alt": "Scène du cabaret à Chanteloup-les-Vignes, improvisateurs en cercle sous les projecteurs",
+      "slideshow": true,
+      "background": "white",
+      "photos": [
+        "/images/chanteloup/equipe.jpg",
+        "/images/chanteloup/1.jpg",
+        "/images/chanteloup/2.jpg",
+        "/images/chanteloup/3.jpg"
+      ],
+      "crop": false
+    },
+    {
+      "id": "merci-2025-11",
+      "title": "Merci au public",
+      "intro": "Cabaret d'improvisation, novembre 2025.",
+      "alt": "La troupe de L'Alibi du Mardi salue le public à la fin du cabaret de novembre 2025 : Merci !",
+      "slideshow": false,
+      "background": "deep",
+      "photos": [
+        "/images/merci-2025-11.jpg"
+      ],
+      "crop": false
+    }
+  ]
+}

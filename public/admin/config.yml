@@ -1,0 +1,204 @@
+# Configuration de l'administration (Decap CMS)
+# À MODIFIER une seule fois : "repo" = votre-compte-github/nom-du-depot
+backend:
+  name: github
+  repo: VOTRE-COMPTE/lalibidumardi-site
+  branch: main
+  base_url: https://VOTRE-SITE.vercel.app   # puis votre nom de domaine quand il sera branché
+  auth_endpoint: api/auth
+
+locale: fr
+site_url: /
+display_url: /
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: prochain
+    label: "Prochain spectacle"
+    files:
+      - name: next_event
+        label: "Prochain spectacle (bandeau jaune et page Spectacles)"
+        file: content/next_event.json
+        format: json
+        fields:
+          - {label: "Afficher un prochain spectacle", name: active, widget: boolean, default: true, hint: "Décochez pour afficher « Bientôt annoncée »."}
+          - {label: "Titre", name: title, widget: string}
+          - {label: "Date et heure", name: date, widget: datetime, format: "YYYY-MM-DD[T]HH:mm", date_format: "DD/MM/YYYY", time_format: "HH:mm", picker_utc: false}
+          - {label: "Lieu", name: venue, widget: string, default: "Salle des Arts"}
+          - {label: "Tarif affiché (ex : 8 €)", name: price_label, widget: string, required: false}
+          - {label: "Tarif en euros (nombre, pour Google)", name: price_eur, widget: number, required: false, value_type: float}
+
+  - name: archives
+    label: "Soirées passées (affiches)"
+    files:
+      - name: events
+        label: "Affiches des soirées"
+        file: content/events.json
+        format: json
+        fields:
+          - label: "Soirées (la plus récente en premier)"
+            name: events
+            widget: list
+            summary: "{{fields.date_label}} : {{fields.title}}"
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Date (texte libre)", name: date_label, widget: string, hint: "Ex : Vendredi 16 octobre 2026"}
+              - {label: "Détails", name: details, widget: string, hint: "Ex : 20h30 · Salle des Arts · 5 €"}
+              - {label: "Affiche", name: poster, widget: image}
+              - {label: "Description de l'image (accessibilité)", name: alt, widget: string}
+
+  - name: photos
+    label: "Photos"
+    files:
+      - name: galleries
+        label: "Galeries photos"
+        file: content/galleries.json
+        format: json
+        fields:
+          - label: "Galeries"
+            name: galleries
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Identifiant (sans espace)", name: id, widget: string}
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Texte d'introduction", name: intro, widget: text, required: false}
+              - {label: "Description des photos (accessibilité)", name: alt, widget: string}
+              - {label: "Photos dans le diaporama de l'accueil", name: slideshow, widget: boolean, default: true}
+              - {label: "Recadrer en 16/9", name: crop, widget: boolean, default: false}
+              - {label: "Couleur de fond", name: background, widget: select, options: [ink, white, deep, paper], default: ink}
+              - {label: "Photos", name: photos, widget: list, field: {label: Photo, name: image, widget: image}}
+
+  - name: ateliers_c
+    label: "Ateliers"
+    files:
+      - name: ateliers
+        label: "Page Ateliers"
+        file: content/ateliers.json
+        format: json
+        fields:
+          - {label: "Titre", name: title, widget: string}
+          - {label: "Introduction", name: intro, widget: text}
+          - label: "Groupes"
+            name: groups
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Nom", name: name, widget: string}
+              - {label: "Sous-titre", name: subtitle, widget: string}
+              - {label: "Contenu des séances", name: points, widget: list, field: {label: Point, name: point, widget: string}}
+              - {label: "Jour", name: day, widget: string, required: false}
+              - {label: "Horaire", name: time, widget: string, required: false}
+              - {label: "Lieu", name: place, widget: string, required: false}
+              - {label: "Tarif", name: fee, widget: string, required: false}
+          - {label: "Note pratique (sous les groupes)", name: practical_note, widget: string, required: false}
+          - {label: "Lab : titre", name: lab_title, widget: string}
+          - {label: "Lab : texte", name: lab_text, widget: text}
+          - {label: "Lab : jour et modalités", name: lab_details, widget: string, required: false}
+          - {label: "Inscription : texte", name: register_text, widget: text}
+          - {label: "Inscription : modalités, cotisation", name: register_details, widget: text, required: false}
+
+  - name: spectacles_c
+    label: "Spectacles"
+    files:
+      - name: formats
+        label: "Nos formats"
+        file: content/formats.json
+        format: json
+        fields:
+          - label: "Formats"
+            name: formats
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Description", name: text, widget: text}
+      - name: spotlights
+        label: "Spectacles mis en avant"
+        file: content/spotlights.json
+        format: json
+        fields:
+          - label: "Spectacles"
+            name: spotlights
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Identifiant (sans espace)", name: id, widget: string}
+              - {label: "Sur-titre", name: kicker, widget: string, required: false}
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Affiche", name: poster, widget: image}
+              - {label: "Description de l'affiche", name: poster_alt, widget: string}
+              - {label: "Texte (laissez une ligne vide entre deux paragraphes)", name: text, widget: text}
+              - {label: "Distribution et infos (**gras** possible)", name: credits, widget: text, required: false}
+              - {label: "Afficher la prochaine date du bandeau", name: show_next_date, widget: boolean, default: false}
+              - {label: "Identifiant de la galerie photo associée", name: gallery, widget: string, required: false}
+              - {label: "Couleur de fond", name: background, widget: select, options: [white, paper], default: white}
+
+  - name: asso
+    label: "Association et accueil"
+    files:
+      - name: association
+        label: "Page L'association"
+        file: content/association.json
+        format: json
+        fields:
+          - {label: "Titre", name: title, widget: string}
+          - {label: "Introduction", name: intro, widget: string}
+          - {label: "Notre histoire", name: history, widget: text}
+          - {label: "Création (ex : Fondée en avril 2019)", name: founded, widget: string, required: false}
+          - label: "Valeurs"
+            name: values
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Texte", name: text, widget: string}
+          - {label: "Photo de la troupe", name: team_photo, widget: image, required: false}
+          - {label: "Description de la photo", name: team_photo_alt, widget: string, required: false}
+          - label: "Équipe (publier uniquement avec l'accord des personnes)"
+            name: team
+            widget: list
+            required: false
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Prénom Nom", name: name, widget: string}
+              - {label: "Rôle", name: role, widget: string, required: false}
+              - {label: "Photo", name: photo, widget: image, required: false}
+          - {label: "Adresse du siège", name: address, widget: string, required: false}
+      - name: home
+        label: "Page d'accueil"
+        file: content/home.json
+        format: json
+        fields:
+          - {label: "Titre, première ligne", name: title_1, widget: string}
+          - {label: "Titre, seconde ligne (en rose)", name: title_2, widget: string}
+          - {label: "Texte d'introduction", name: intro, widget: text}
+          - label: "Trois cartes"
+            name: cards
+            widget: list
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Texte", name: text, widget: text}
+              - {label: "Lien", name: link, widget: string}
+              - {label: "Texte du lien", name: cta, widget: string}
+          - {label: "Photos : titre", name: photos_title, widget: string}
+          - {label: "Photos : texte", name: photos_text, widget: string}
+          - {label: "Photos : identifiant de la galerie", name: photos_gallery, widget: string}
+          - {label: "Photos : numéros choisis (ex : 04)", name: photos_pick, widget: list, field: {label: Numéro, name: n, widget: string}}
+      - name: site
+        label: "Réglages du site (contact, réseaux, référencement)"
+        file: content/site.json
+        format: json
+        fields:
+          - {label: "Nom", name: name, widget: string}
+          - {label: "Sur-titre de l'accueil", name: eyebrow, widget: string}
+          - {label: "E-mail public", name: email, widget: string}
+          - {label: "Instagram (adresse complète)", name: instagram, widget: string, required: false}
+          - {label: "Facebook (adresse complète)", name: facebook, widget: string, required: false}
+          - {label: "Salle de spectacle", name: venue, widget: string}
+          - {label: "Adresse du site (https://...)", name: site_url, widget: string, required: false}
+          - {label: "Titre pour Google", name: seo_title, widget: string}
+          - {label: "Description pour Google", name: seo_description, widget: text}
+          - {label: "Mentions légales : directeur de la publication", name: legal_publisher, widget: string, required: false}
+          - {label: "Mentions légales : adresse de l'association", name: legal_address, widget: string, required: false}

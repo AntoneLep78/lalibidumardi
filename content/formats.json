@@ -1,0 +1,32 @@
+{
+  "formats": [
+    {
+      "title": "Cabaret d'improvisation",
+      "text": "Une succession de scènes courtes, avec catégories, contraintes et défis, et des thèmes ou suggestions du public. Un format vivant, accessible et plein de surprises."
+    },
+    {
+      "title": "Match d'improvisation",
+      "text": "Une rencontre avec une autre troupe, autour de catégories et de contraintes. Dernier match : contre Paris Impro, le 29 mai 2026."
+    },
+    {
+      "title": "The Cruise",
+      "text": "Une croisière improvisée : le public contribue à définir les personnages, puis leurs histoires et leurs interactions se construisent sur scène."
+    },
+    {
+      "title": "Crossings",
+      "text": "Huit personnages donnés par le public, des rencontres à deux, et une scène finale où tous se retrouvent."
+    },
+    {
+      "title": "Shuffle",
+      "text": "Un format original de la troupe : deux histoires, huit personnages, mille possibilités."
+    },
+    {
+      "title": "La Séance",
+      "text": "Un duo patient et praticien, en huis clos. Le public choisit le sujet, les souvenirs prennent vie sur scène."
+    },
+    {
+      "title": "Festival d'un week-end",
+      "text": "Spectacles pour enfants, spectacle improvisé et match, sur deux jours."
+    }
+  ]
+}

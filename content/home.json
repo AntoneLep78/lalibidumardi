@@ -1,0 +1,36 @@
+{
+  "title_1": "Rien n'est écrit.",
+  "title_2": "Tout peut arriver.",
+  "intro": "L'Alibi du Mardi, c'est une troupe de théâtre d'improvisation à Villennes-sur-Seine. On se retrouve pour apprendre, jouer, inventer des histoires et les partager sur scène.",
+  "cards": [
+    {
+      "title": "Jouer",
+      "text": "Deux groupes d'ateliers, débutants et avancés, pour apprendre l'écoute, la construction d'histoires et le plaisir de jouer ensemble.",
+      "link": "/ateliers",
+      "cta": "Voir les ateliers"
+    },
+    {
+      "title": "Regarder",
+      "text": "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.",
+      "link": "/spectacles",
+      "cta": "Voir les spectacles"
+    },
+    {
+      "title": "Nous connaître",
+      "text": "Une association de village, une troupe qui fait vivre l'improvisation par des ateliers, des spectacles et des créations collectives.",
+      "link": "/association",
+      "cta": "L'association"
+    }
+  ],
+  "photos_title": "Le cabaret du 16 octobre en images",
+  "photos_text": "Environ 100 spectateurs ce soir-là, un record d'affluence pour la troupe, et un public très enthousiaste.",
+  "photos_gallery": "cabaret-2026-10",
+  "photos_pick": [
+    "04",
+    "11",
+    "16",
+    "03",
+    "08",
+    "02"
+  ]
+}

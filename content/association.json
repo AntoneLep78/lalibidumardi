@@ -1,0 +1,28 @@
+{
+  "title": "L'association",
+  "intro": "Une troupe d'improvisation installée à Villennes-sur-Seine, portée par des bénévoles.",
+  "history": "À L'Alibi du Mardi, on aime les histoires qui naissent de rien, les personnages improbables et les moments qu'on ne pourra jamais rejouer à l'identique. Notre association fait vivre le théâtre d'improvisation à Villennes-sur-Seine à travers des ateliers, des spectacles et des projets de création collective.",
+  "founded": "",
+  "values": [
+    {
+      "title": "Plaisir de jouer",
+      "text": "Jouer pour le plaisir, sur scène comme en atelier."
+    },
+    {
+      "title": "Écoute",
+      "text": "Accepter et enrichir les propositions des autres."
+    },
+    {
+      "title": "Bienveillance",
+      "text": "Un cadre convivial pour oser et se tromper."
+    },
+    {
+      "title": "Création collective",
+      "text": "Essayer de nouveaux formats, ensemble."
+    }
+  ],
+  "team_photo": "/images/chanteloup/equipe.jpg",
+  "team_photo_alt": "Les membres de la troupe L'Alibi du Mardi, en tee-shirts noirs, riant ensemble",
+  "team": [],
+  "address": ""
+}

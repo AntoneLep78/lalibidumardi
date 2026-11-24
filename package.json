@@ -1,0 +1,12 @@
+{
+  "name": "lalibidumardi-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site de L'Alibi du Mardi, troupe de théâtre d'improvisation à Villennes-sur-Seine",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node build.mjs && npx serve dist"
+  },
+  "engines": { "node": ">=20" }
+}
