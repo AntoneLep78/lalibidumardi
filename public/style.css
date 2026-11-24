@@ -54,7 +54,7 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .hero p{margin:0;font-size:20px;line-height:1.5;color:var(--ice);max-width:50ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
 /* bandeau prochaine soirée */
-.strip{background:var(--sun)}
+.strip{background:#D6296A;color:#fff}
 .strip__in{padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px}
 .strip__k{font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
 .strip__on,.strip__off{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;flex:1}
