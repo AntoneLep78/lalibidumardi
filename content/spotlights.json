@@ -23,6 +23,18 @@
       "show_next_date": false,
       "gallery": "",
       "background": "white"
+    },
+    {
+      "id": "shuffle",
+      "kicker": "Spectacle totalement improvisé · 1h30",
+      "title": "Shuffle",
+      "poster": "/images/affiches/shuffle-2024-11.jpg",
+      "poster_alt": "Affiche de Shuffle : 2 histoires, 8 personnages, 1000 possibilités",
+      "text": "Huit comédiens sur scène, divisés en deux équipes de quatre : les blancs et les noirs. Chaque équipe joue une histoire différente, dont le lieu de départ et l'occasion sont définis par le public (un hall d'entreprise pour un pot de départ en retraite, un refuge avant une randonnée, une salle à manger pour un dîner de retrouvailles...).\n\nLes équipes jouent à tour de rôle des scènes de 6 minutes. À chaque nouvelle scène, un joueur rejoint l'autre équipe en gardant son personnage : les deux histoires se mêlent peu à peu, jusqu'à une scène finale de 5 à 10 minutes où les huit comédiens bouclent l'histoire, devenue une seule.\n\nAu total, onze scènes pour environ une heure et quart de spectacle, présenté par un maître de cérémonie qui recueille les idées du public.",
+      "credits": "",
+      "show_next_date": false,
+      "gallery": "",
+      "background": "paper"
     }
   ]
 }
