@@ -2,9 +2,9 @@
 # À MODIFIER une seule fois : "repo" = votre-compte-github/nom-du-depot
 backend:
   name: github
-  repo: VOTRE-COMPTE/lalibidumardi-site
+  repo: AntoneLep78/lalibidumardi
   branch: main
-  base_url: https://VOTRE-SITE.vercel.app   # puis votre nom de domaine quand il sera branché
+  base_url: https://lalibidumardi.vercel.app   # puis votre nom de domaine quand il sera branché
   auth_endpoint: api/auth
 
 locale: fr
