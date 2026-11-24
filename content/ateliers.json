@@ -1,38 +1,52 @@
 {
-  "title": "Les ateliers d'improvisation",
-  "intro": "Jamais monté sur scène ? Déjà improvisateur ? On apprend à construire ensemble, à se surprendre et à faire confiance aux propositions des autres, dans un esprit d'écoute, de jeu et de bienveillance.",
+  "title": "Les ateliers",
+  "intro": "Jamais monté sur scène ? Déjà improvisateur ? On apprend à construire ensemble, à se surprendre et à faire confiance aux propositions des autres, dans un esprit d'écoute, de jeu et de bienveillance. Les ateliers sont animés par des passionnés de théâtre, de pratique et d'enseignement professionnels et amateurs.",
   "groups": [
     {
-      "name": "Débutants",
-      "subtitle": "Pour commencer, même grands débutants",
+      "name": "Improvisation débutants",
+      "subtitle": "Avec Anthony, pour commencer, même grands débutants",
       "points": [
-        "Écoute, acceptation des propositions, construction collective",
-        "Personnages, statuts, et la plateforme : qui, où, quoi, quelle relation",
-        "Précision du mot, du verbe et de l'intention"
+        "Lâcher prise, confiance en soi et dans le groupe, prise de parole en public, imagination",
+        "Créer une histoire en suivant la mécanique du récit, donner vie à des personnages en une fraction de seconde",
+        "Construire des décors avec précision, fictifs mais bien réels, et vivre des aventures dans l'instant, à l'instinct"
       ],
-      "day": "Le mardi soir",
-      "time": "",
-      "place": "",
-      "fee": ""
+      "infos": [
+        "Le mardi, 19h30 - 21h"
+      ]
     },
     {
-      "name": "Avancés",
-      "subtitle": "Pour aller plus loin",
+      "name": "Improvisation avancés",
+      "subtitle": "Avec Anthony, pour aller plus loin",
       "points": [
         "Construction de scènes, placement scénique et dotation",
         "Catégories de cabaret et contraintes surprises",
         "Préparation des matchs, savoir conclure, gérer le rythme"
       ],
-      "day": "Le mercredi soir depuis octobre 2026",
-      "time": "",
-      "place": "",
-      "fee": ""
+      "infos": [
+        "Le mardi, 21h - 22h30"
+      ]
+    },
+    {
+      "name": "Théâtre enfants",
+      "subtitle": "Avec Lilou, théâtre classique",
+      "points": [
+        "Jeu d'acteur et technique",
+        "Personnages, caractérisation, émotions et états d'âme, relations, analyse de textes",
+        "Une pièce de théâtre présentée en fin d'année"
+      ],
+      "infos": [
+        "Le mercredi",
+        "Primaires : 10h - 11h30",
+        "Collège 1 (6e et 5e) : 15h - 16h30",
+        "Collège 2 (4e et 3e) : 16h30 - 18h"
+      ]
     }
   ],
-  "practical_note": "Horaires, lieu et tarifs de la saison en cours : écrivez-nous pour les connaître.",
+  "practical_note": "Tous les ateliers ont lieu à la Maison des associations. Pour les tarifs et les modalités de la saison, écrivez-nous.",
   "lab_title": "Le Lab de l'Alibi",
   "lab_text": "Notre espace d'expérimentation : un endroit pour essayer de nouveaux formats, tester des idées et imaginer les spectacles de demain, en duo, en trio ou en collectif. Ouvert à celles et ceux qui ont envie de participer à cette démarche.",
   "lab_details": "",
   "register_text": "Écrivez-nous pour connaître les modalités de la saison en cours et vous inscrire.",
-  "register_details": ""
+  "register_details": "",
+  "groups_title": "Nos ateliers"
 }
