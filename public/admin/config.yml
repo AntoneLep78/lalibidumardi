@@ -207,6 +207,7 @@ collections:
           - {label: "Facebook (adresse complète)", name: facebook, widget: string, required: false}
           - {label: "Salle de spectacle", name: venue, widget: string}
           - {label: "Adresse du site (https://...)", name: site_url, widget: string, required: false}
+          - {label: "Identifiant Google Tag Manager (GTM-XXXX, vide pour désactiver)", name: gtm_id, widget: string, required: false}
           - {label: "Titre pour Google", name: seo_title, widget: string}
           - {label: "Description pour Google", name: seo_description, widget: text}
           - {label: "Mentions légales : directeur de la publication", name: legal_publisher, widget: string, required: false}

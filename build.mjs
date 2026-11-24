@@ -53,12 +53,12 @@ ${BASE ? `<meta property="og:image" content="${BASE}${ogImage}">` : ""}
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="preload" href="/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<script>document.documentElement.className+=" js"</script>
+${site.gtm_id ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(site.gtm_id)}');</script>\n` : ""}<script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="/style.css">
 ${ld}
 </head>
 <body>
-<a class="skip" href="#contenu">Aller au contenu</a>
+${site.gtm_id ? `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${esc(site.gtm_id)}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n` : ""}<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="header"><div class="wrap header__in">
 <a class="header__logo" href="/" aria-label="${esc(site.name)}, accueil"><img src="/images/logo-small.png" alt="${esc(site.name)}, ligue d'improvisation théâtrale" width="105" height="64"></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
