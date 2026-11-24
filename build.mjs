@@ -53,6 +53,7 @@ ${BASE ? `<meta property="og:image" content="${BASE}${ogImage}">` : ""}
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="preload" href="/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="/style.css">
 ${ld}
 </head>
@@ -60,8 +61,9 @@ ${ld}
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="header"><div class="wrap header__in">
 <a class="header__logo" href="/" aria-label="${esc(site.name)}, accueil"><img src="/images/logo-small.png" alt="${esc(site.name)}, ligue d'improvisation théâtrale" width="105" height="64"></a>
-<nav class="nav" aria-label="Navigation principale">${nav}</nav>
-<a class="btn btn--primary btn--sm" href="/ateliers#inscription">S'inscrire</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+<nav class="nav" id="menu" aria-label="Navigation principale">${nav}</nav>
+<a class="btn btn--primary btn--sm header__cta" href="/ateliers#inscription">S'inscrire</a>
 </div></header>
 <main id="contenu">
 ${body}

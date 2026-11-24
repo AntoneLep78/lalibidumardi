@@ -1,5 +1,17 @@
 (function () {
   "use strict";
+  // 0. Menu burger (mobile)
+  var header = document.querySelector(".header"), toggle = document.querySelector(".nav-toggle");
+  if (header && toggle) {
+    var setOpen = function (open) {
+      header.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    };
+    toggle.addEventListener("click", function () { setOpen(!header.classList.contains("is-open")); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { setOpen(false); toggle.focus(); } });
+    header.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
+  }
   // 1. Diaporama aléatoire derrière le titre de l'accueil
   var hero = document.getElementById("hero");
   if (hero) {

@@ -119,3 +119,19 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 @media (prefers-reduced-motion:reduce){.hero__img{transition:none}html{scroll-behavior:auto}}
 
 .sec--img{background-size:cover;background-position:center bottom;background-repeat:no-repeat}
+
+/* Menu burger (mobile) */
+.nav-toggle{display:none}
+@media (max-width:820px){
+  .nav-toggle{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:48px;height:48px;margin-left:auto;padding:0;background:transparent;border:2px solid rgba(255,255,255,.35);border-radius:12px;cursor:pointer}
+  .nav-toggle:hover{border-color:#fff}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .2s,opacity .2s}
+  .header.is-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .header.is-open .nav-toggle span:nth-child(2){opacity:0}
+  .header.is-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav{order:3;flex:1 0 100%;flex-direction:column;gap:0;padding-top:4px}
+  .nav a{padding:14px 2px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .header__cta{order:4;flex:1 0 100%;text-align:center;margin:12px 0 6px}
+  .js .header:not(.is-open) .nav,.js .header:not(.is-open) .header__cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){.nav-toggle span{transition:none}}
