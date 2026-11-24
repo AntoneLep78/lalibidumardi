@@ -53,12 +53,12 @@ ${BASE ? `<meta property="og:image" content="${BASE}${ogImage}">` : ""}
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="preload" href="/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-${site.gtm_id ? `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${esc(site.gtm_id)}');</script>\n` : ""}<script>document.documentElement.className+=" js"</script>
+<script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="/style.css">
 ${ld}
 </head>
-<body>
-${site.gtm_id ? `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${esc(site.gtm_id)}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n` : ""}<a class="skip" href="#contenu">Aller au contenu</a>
+<body${site.gtm_id ? ` data-gtm="${esc(site.gtm_id)}"` : ""}>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="header"><div class="wrap header__in">
 <a class="header__logo" href="/" aria-label="${esc(site.name)}, accueil"><img src="/images/logo-small.png" alt="${esc(site.name)}, ligue d'improvisation théâtrale" width="105" height="64"></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
@@ -68,7 +68,10 @@ ${site.gtm_id ? `<noscript><iframe src="https://www.googletagmanager.com/ns.html
 <main id="contenu">
 ${body}
 </main>
-${footer()}
+${site.gtm_id ? `<div class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-t" hidden>
+<div class="wrap consent__in"><div class="consent__txt"><strong id="consent-t">Votre vie privée</strong><p>Nous aimerions mesurer l'audience du site (pages vues, provenance) avec Google Analytics, ce qui dépose des cookies. Vous pouvez accepter ou refuser, c'est sans effet sur votre visite. <a href="/mentions-legales#cookies">En savoir plus</a></p></div>
+<div class="consent__btns"><button type="button" class="btn btn--outline btn--sm" data-consent="denied">Refuser</button><button type="button" class="btn btn--primary btn--sm" data-consent="granted">Accepter</button></div></div></div>
+` : ""}${footer()}
 <script src="/main.js" defer></script>
 </body>
 </html>`;
@@ -77,7 +80,7 @@ function footer() {
   return `<footer class="footer"><div class="wrap footer__in">
 <div><img src="/images/logo-small.png" alt="${esc(site.name)}" width="105" height="64"><p>Association d'improvisation théâtrale, Villennes-sur-Seine (Yvelines).</p></div>
 <div class="footer__links"><a href="/ateliers">Ateliers</a><a href="/spectacles">Spectacles et réservations</a><a href="/association">L'association et contact</a></div>
-<div class="footer__links"><a href="mailto:${mail}">${esc(mail)}</a>${site.instagram ? `<a href="${esc(site.instagram)}" rel="noopener">Instagram</a>` : ""}${site.facebook ? `<a href="${esc(site.facebook)}" rel="noopener">Facebook</a>` : ""}<a href="/mentions-legales">Mentions légales</a></div>
+<div class="footer__links"><a href="mailto:${mail}">${esc(mail)}</a>${site.instagram ? `<a href="${esc(site.instagram)}" rel="noopener">Instagram</a>` : ""}${site.facebook ? `<a href="${esc(site.facebook)}" rel="noopener">Facebook</a>` : ""}<a href="/mentions-legales">Mentions légales</a>${site.gtm_id ? `<button type="button" class="linkbtn" data-consent-open>Gérer les cookies</button>` : ""}</div>
 </div></footer>`;
 }
 const section = (inner, bg = "white", id = "") => `<section class="sec sec--${bg}"${id ? ` id="${id}"` : ""}><div class="wrap sec__in">${inner}</div></section>`;
@@ -181,7 +184,8 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
   const body = pagehead("Mentions légales", "Informations légales du site de L'Alibi du Mardi.")
     + section(`<div class="legal"><h2>Éditeur</h2><p>${esc(site.name)}, association de théâtre d'improvisation, Villennes-sur-Seine (Yvelines).${site.legal_address ? `<br>${esc(site.legal_address)}` : ""}<br>Contact : <a href="mailto:${mail}">${esc(mail)}</a>${site.legal_publisher ? `<br>Directeur de la publication : ${esc(site.legal_publisher)}` : ""}</p>
 <h2>Hébergement</h2><p>Site hébergé par Vercel Inc. (<a href="https://vercel.com" rel="noopener">vercel.com</a>).</p>
-<h2>Données personnelles</h2><p>Ce site ne dépose aucun cookie de suivi et ne collecte aucune donnée par formulaire : les réservations et les inscriptions se font par e-mail. Les adresses e-mail reçues ne servent qu'à répondre à votre demande.</p>
+<h2>Données personnelles</h2><p>Ce site ne collecte aucune donnée par formulaire : les réservations et les inscriptions se font par e-mail. Les adresses e-mail reçues ne servent qu'à répondre à votre demande.</p>
+${site.gtm_id ? `<h2 id="cookies">Cookies et mesure d'audience</h2><p>Avec votre accord uniquement, ce site utilise Google Analytics (via Google Tag Manager) pour mesurer sa fréquentation : pages vues, provenance des visiteurs, type d'appareil. Ces données servent uniquement à améliorer le site. Sans votre accord, aucun cookie de mesure n'est déposé et Google Tag Manager n'est pas chargé. Votre choix est conservé six mois ; vous pouvez le modifier à tout moment avec le lien « Gérer les cookies » en bas de page, ou supprimer les cookies depuis les réglages de votre navigateur.</p>` : `<p>Ce site ne dépose aucun cookie de suivi.</p>`}
 <h2>Photographies</h2><p>Les photographies et affiches publiées sont la propriété de l'association ou de leurs auteurs. Pour toute demande de retrait, écrivez-nous.</p></div>`, "white");
   pages.push({ file: "mentions-legales.html", title: "Mentions légales", desc: "Mentions légales du site de L'Alibi du Mardi.", cur: "", body });
 }

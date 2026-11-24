@@ -12,6 +12,30 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") { setOpen(false); toggle.focus(); } });
     header.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
   }
+  // Consentement cookies : Google Tag Manager n'est chargé qu'après accord
+  var gtm = document.body.getAttribute("data-gtm"), banner = document.getElementById("consent");
+  if (gtm && banner) {
+    var KEY = "alibi-consent", SIX_MONTHS = 182 * 864e5, loaded = false;
+    var read = function () { try { var v = JSON.parse(localStorage.getItem(KEY) || "null"); return v && Date.now() - v.t < SIX_MONTHS ? v.v : null; } catch (e) { return null; } };
+    var save = function (v) { try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {} };
+    var load = function () {
+      if (loaded) return; loaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+      var s = document.createElement("script"); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtm);
+      document.head.appendChild(s);
+    };
+    var state = read();
+    if (state === "granted") load(); else if (state === null) banner.hidden = false;
+    banner.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-consent]"); if (!b) return;
+      var v = b.getAttribute("data-consent"); save(v); banner.hidden = true;
+      if (v === "granted") load();
+      else if (loaded) location.reload();
+    });
+    document.addEventListener("click", function (e) { if (e.target.closest("[data-consent-open]")) banner.hidden = false; });
+  }
   // 1. Diaporama aléatoire derrière le titre de l'accueil
   var hero = document.getElementById("hero");
   if (hero) {
