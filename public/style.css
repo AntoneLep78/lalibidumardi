@@ -117,3 +117,5 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .footer__links a{color:var(--ice);font-size:15px}
 @media (max-width:640px){.strip__in{flex-direction:column;align-items:flex-start}.strip__on,.strip__off{flex-direction:column;align-items:flex-start}.sec__in{padding-top:48px;padding-bottom:48px}.hero__in{padding-top:56px;padding-bottom:64px}.strip .btn{margin-left:0}.spot{gap:28px}}
 @media (prefers-reduced-motion:reduce){.hero__img{transition:none}html{scroll-behavior:auto}}
+
+.sec--img{background-size:cover;background-position:center bottom;background-repeat:no-repeat}

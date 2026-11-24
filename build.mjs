@@ -79,7 +79,10 @@ function footer() {
 </div></footer>`;
 }
 const section = (inner, bg = "white", id = "") => `<section class="sec sec--${bg}"${id ? ` id="${id}"` : ""}><div class="wrap sec__in">${inner}</div></section>`;
-const pagehead = (h1, sub) => section(`<h1 class="pagehead__h1">${esc(h1)}</h1><p class="pagehead__sub">${esc(sub)}</p>`, "deep");
+const pagehead = (h1, sub, img = "") => {
+  const html = section(`<h1 class="pagehead__h1">${esc(h1)}</h1><p class="pagehead__sub">${esc(sub)}</p>`, "deep");
+  return img ? html.replace('class="sec sec--deep"', `class="sec sec--deep sec--img" style="background-image:url(${img})"`) : html;
+};
 const poster = (e) => `<article class="poster"><img src="${esc(e.poster)}" alt="${esc(e.alt)}" loading="lazy"><div><h3>${esc(e.title)}</h3><p>${esc([e.date_label, e.details].filter(Boolean).join(" · "))}</p></div></article>`;
 const gallery = (g, pick) => {
   const list = pick ? pick.map((n) => g.photos.find((p) => p.endsWith("/" + n + ".jpg"))).filter(Boolean) : g.photos;
@@ -151,7 +154,7 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
   const gsec = (g) => section(`<h2${g.id === "cabaret-2026-10" ? ' id="photos"' : ""}>${esc(g.title)}</h2>${g.intro ? `<p class="lead${["ink", "deep"].includes(bgOf(g)) ? " lead--light" : ""}">${esc(g.intro)}</p>` : ""}${gallery(g)}`, bgOf(g));
   const spotHtml = spotlights.map(spot).join("");
   const rest = galleries.filter((g) => !used.has(g.id)).map(gsec).join("");
-  const body = pagehead("Spectacles et réservations", "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.")
+  const body = pagehead("Spectacles et réservations", "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.", "/images/fond-spectacles.jpg")
     + strip()
     + section(`<h2>Nos formats</h2><div class="cards cards--3">${formats.map((f) => `<div class="card"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("")}</div>`, "paper")
     + spotHtml + rest
