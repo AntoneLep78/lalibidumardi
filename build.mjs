@@ -12,7 +12,7 @@ const site = read("site"), nextEv = read("next_event"), home = read("home"), eve
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
 const paras = (s = "") => s.split(/\n\s*\n/).filter(Boolean).map((p) => `<p>${inline(p.trim())}</p>`).join("");
-const BASE = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL : "") || site.site_url || "").replace(/\/$/, "");
+const BASE = (site.site_url || process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL : "") || "").replace(/\/$/, "");
 const mail = site.email;
 const mailto = (subject, body = "") => `mailto:${mail}?subject=${encodeURIComponent(subject)}${body ? "&body=" + encodeURIComponent(body) : ""}`;
 
@@ -176,7 +176,7 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     + section(`<h2>Notre histoire</h2>${paras(asso.history).replace(/<p>/g, "<p class=\"lead\">")}${asso.founded ? `<p class="lead">${esc(asso.founded)}</p>` : ""}<div class="values">${asso.values.map((v) => `<div><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join("")}</div>`, "white")
     + section(`<h2>L'équipe</h2>${asso.team_photo ? `<img class="team" src="${esc(asso.team_photo)}" alt="${esc(asso.team_photo_alt)}" loading="lazy">` : ""}${team ? `<div class="members">${team}</div>` : ""}`, "paper")
     + section(`<h2>Nous contacter</h2><div class="contact"><div><span class="kicker">E-mail</span><p><a href="mailto:${mail}">${esc(mail)}</a></p></div><div><span class="kicker">Salle de spectacle</span><p>${esc(site.venue)}</p></div>${asso.address ? `<div><span class="kicker">Adresse du siège</span><p>${esc(asso.address)}</p></div>` : ""}<div><span class="kicker">Réseaux</span><p>${[site.instagram && `<a href="${esc(site.instagram)}" rel="noopener">Instagram</a>`, site.facebook && `<a href="${esc(site.facebook)}" rel="noopener">Facebook</a>`].filter(Boolean).join(" · ")}</p></div></div><p><a class="btn btn--primary" href="${esc(mailto("Message depuis le site"))}">Nous écrire</a></p>`, "white");
-  pages.push({ file: "association.html", title: "L'association", desc: "L'Alibi du Mardi, association de théâtre d'improvisation à Villennes-sur-Seine : notre histoire, notre équipe et comment nous contacter.", cur: "L'association", body });
+  pages.push({ file: "association.html", title: "L'association, troupe d'improvisation théâtrale", desc: "L'Alibi du Mardi, association de théâtre d'improvisation née il y a sept ans à Villennes-sur-Seine (Yvelines) : notre histoire, nos coachs et comment nous contacter.", cur: "L'association", body });
 }
 
 // ---------- MENTIONS LÉGALES
