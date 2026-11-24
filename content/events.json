@@ -29,11 +29,25 @@
       "alt": "Affiche du cabaret d'improvisation, saison 2"
     },
     {
+      "title": "Spectacles enfants",
+      "date_label": "Dimanche 29 juin 2025",
+      "details": "15h · Salle des Arts · Entrée sur réservation",
+      "poster": "/images/affiches/spectacles-enfants-2025-06.jpg",
+      "alt": "Affiche des spectacles enfants de L'Alibi du Mardi : En avant marche ! et Une histoire sans queue ni tête"
+    },
+    {
       "title": "Cabaret d'impro",
       "date_label": "Samedi 28 juin 2025",
       "details": "20h30 · Salle des Arts · 5 €",
       "poster": "/images/affiches/cabaret-2025-06.jpg",
       "alt": "Affiche du cabaret d'improvisation du samedi 28 juin 2025"
+    },
+    {
+      "title": "Léa & Léo, théâtre immersif",
+      "date_label": "Samedi 28 juin 2025",
+      "details": "16h · Salle des Arts",
+      "poster": "/images/affiches/mariage-2025-06.jpg",
+      "alt": "Affiche du spectacle de théâtre immersif Léa et Léo : une cérémonie de mariage pas tout à fait comme les autres"
     },
     {
       "title": "Crossings",

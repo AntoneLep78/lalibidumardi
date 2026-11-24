@@ -47,6 +47,18 @@
       "show_next_date": false,
       "gallery": "match-paris-impro-2026-05",
       "background": "white"
+    },
+    {
+      "id": "spectacles-enfants",
+      "kicker": "Groupes enfants et ados · coachés par Lilou",
+      "title": "Les spectacles des groupes enfants",
+      "poster": "/images/affiches/spectacles-enfants-2025-06.jpg",
+      "poster_alt": "Affiche des spectacles enfants de L'Alibi du Mardi : En avant marche ! et Une histoire sans queue ni tête",
+      "text": "Chaque année, Lilou écrit pour chaque groupe d'enfants et d'ados un spectacle original, présenté sur scène devant le public. Deux exemples avec les spectacles du dimanche 29 juin 2025.\n\n**« En avant marche ! »**, par le groupe des 9/10 ans : préparez-vous pour une randonnée en montagne ! L'aventure commence là où les chemins se croisent.\n\n**« Une histoire sans queue, ni tête »**, par le groupe des 7/9 ans : un cabaret d'expressions tiré par les cheveux, où de fil en aiguille les mots prennent leurs jambes à leur cou pour vous en faire voir de toutes les couleurs.",
+      "credits": "Textes de **Lilou** · Dimanche 29 juin 2025 · 15h · Salle des Arts",
+      "show_next_date": false,
+      "gallery": "",
+      "background": "paper"
     }
   ]
 }
