@@ -144,6 +144,31 @@ collections:
               - {label: "Identifiant de la galerie photo associée", name: gallery, widget: string, required: false}
               - {label: "Couleur de fond", name: background, widget: select, options: [white, paper], default: white}
 
+  - name: faq_c
+    label: "Questions fréquentes"
+    files:
+      - name: faq
+        label: "FAQ des pages Ateliers et Spectacles"
+        file: content/faq.json
+        format: json
+        fields:
+          - {label: "Ateliers : titre de la section", name: ateliers_title, widget: string}
+          - label: "Ateliers : questions"
+            name: ateliers
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - {label: "Question", name: q, widget: string}
+              - {label: "Réponse", name: a, widget: text}
+          - {label: "Spectacles : titre de la section", name: spectacles_title, widget: string}
+          - label: "Spectacles : questions"
+            name: spectacles
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - {label: "Question", name: q, widget: string}
+              - {label: "Réponse", name: a, widget: text}
+
   - name: asso
     label: "Association et accueil"
     files:

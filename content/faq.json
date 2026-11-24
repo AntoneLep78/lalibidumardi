@@ -1,0 +1,68 @@
+{
+  "ateliers_title": "Questions fréquentes sur les ateliers",
+  "ateliers": [
+    {
+      "q": "Faut-il avoir de l'expérience pour s'inscrire ?",
+      "a": "Non. Le groupe débutants s'adresse à celles et ceux qui n'ont jamais fait de théâtre ni d'improvisation. On y travaille l'écoute, la confiance en soi, l'imagination et la prise de parole en public, à votre rythme."
+    },
+    {
+      "q": "Quelle est la différence entre débutants et avancés ?",
+      "a": "Les débutants découvrent les bases : construire une histoire, donner vie à des personnages, créer un décor avec précision. Les avancés travaillent la construction de scènes, les catégories de cabaret, les contraintes surprises et la préparation des matchs."
+    },
+    {
+      "q": "Quels sont les jours, les horaires et le lieu ?",
+      "a": "Débutants : le mardi, groupe 1 de 19h30 à 21h et groupe 2 de 21h à 22h30. Avancés : le mercredi de 21h à 23h. Les ateliers ont lieu à la Maison des associations de Villennes-sur-Seine."
+    },
+    {
+      "q": "Combien coûte l'inscription ?",
+      "a": "La cotisation annuelle est de 310 € pour tous les ateliers, payable en plusieurs fois. Le Pass Culture est accepté."
+    },
+    {
+      "q": "Peut-on faire un cours d'essai avant de s'inscrire ?",
+      "a": "Oui, un ou deux cours d'essai sont possibles. Écrivez-nous pour en convenir."
+    },
+    {
+      "q": "Peut-on s'inscrire en cours d'année ?",
+      "a": "Oui, avec un tarif calculé au prorata de la présence sur l'année."
+    },
+    {
+      "q": "Faut-il une tenue ou du matériel particulier ?",
+      "a": "Une tenue décontractée et noire, de la tête aux pieds. Rien d'autre à prévoir."
+    },
+    {
+      "q": "Les ateliers mènent-ils à des spectacles ?",
+      "a": "Oui. L'Alibi du Mardi présente régulièrement des cabarets, des matchs et des spectacles longs à la Salle des Arts, et les ateliers permettent de s'y préparer."
+    },
+    {
+      "q": "Quels sont les horaires des ateliers enfants et ados ?",
+      "a": "Les ateliers ont lieu le mercredi : primaires de 10h à 11h30, collège 1 (6e et 5e) de 15h à 16h30, collège 2 (4e et 3e) de 16h30 à 18h."
+    },
+    {
+      "q": "Les enfants font-ils de l'improvisation ou du théâtre classique ?",
+      "a": "Du théâtre classique : jeu d'acteur, technique, personnages, émotions, analyse de textes. Les ateliers comprennent aussi de l'improvisation pour s'exercer. Pour chaque groupe, Lilou écrit un spectacle original, présenté sur scène en fin d'année."
+    }
+  ],
+  "spectacles_title": "Questions fréquentes sur les spectacles",
+  "spectacles": [
+    {
+      "q": "Comment réserver une place ?",
+      "a": "Par e-mail à lalibidumardi@gmail.com, en indiquant la date du spectacle, votre nom et le nombre de places."
+    },
+    {
+      "q": "Combien coûte une place ?",
+      "a": "Les soirées récentes étaient à 5 € ou 8 € selon le spectacle. Le tarif est indiqué sur l'affiche de chaque soirée."
+    },
+    {
+      "q": "Où ont lieu les spectacles ?",
+      "a": "À la Salle des Arts de Villennes-sur-Seine (57 place de la Libération), et parfois ailleurs dans la région : le lieu est toujours indiqué sur l'affiche."
+    },
+    {
+      "q": "Les spectacles sont-ils adaptés aux enfants ?",
+      "a": "Oui, nos spectacles s'adressent aussi aux enfants. Les groupes enfants et ados présentent par ailleurs leurs propres spectacles."
+    },
+    {
+      "q": "Comment organiser un match ou un spectacle avec vous ?",
+      "a": "Écrivez-nous à lalibidumardi@gmail.com en nous présentant votre troupe : nous aimons jouer avec d'autres troupes."
+    }
+  ]
+}

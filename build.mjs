@@ -6,7 +6,7 @@ const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const read = (n) => JSON.parse(fs.readFileSync(path.join(ROOT, "content", n + ".json"), "utf8"));
 const site = read("site"), nextEv = read("next_event"), home = read("home"), events = read("events").events,
   formats = read("formats").formats, spotlights = read("spotlights").spotlights, galleries = read("galleries").galleries,
-  ateliers = read("ateliers"), asso = read("association");
+  ateliers = read("ateliers"), asso = read("association"), faq = read("faq");
 
 // ---------- utilitaires
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -88,6 +88,8 @@ const pagehead = (h1, sub, img = "") => {
   const html = section(`<h1 class="pagehead__h1">${esc(h1)}</h1><p class="pagehead__sub">${esc(sub)}</p>`, "deep");
   return img ? html.replace('class="sec sec--deep"', `class="sec sec--deep sec--img" style="background-image:url(${img})"`) : html;
 };
+const faqSection = (title, items, bg) => section(`<h2>${esc(title)}</h2><div class="faq">${items.map((i) => `<details><summary>${esc(i.q)}</summary><p>${inline(i.a)}</p></details>`).join("")}</div>`, bg, "faq");
+const faqLD = (items) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items.map((i) => ({ "@type": "Question", name: i.q, acceptedAnswer: { "@type": "Answer", text: i.a } })) });
 const poster = (e) => `<article class="poster"><img src="${esc(e.poster)}" alt="${esc(e.alt)}" loading="lazy"><div><h3>${esc(e.title)}</h3><p>${esc([e.date_label, e.details].filter(Boolean).join(" · "))}</p></div></article>`;
 const gallery = (g, pick) => {
   const list = pick ? pick.map((n) => g.photos.find((p) => p.endsWith("/" + n + ".jpg"))).filter(Boolean) : g.photos;
@@ -141,8 +143,9 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     + section(`<h2>${esc(ateliers.groups_title)}</h2>${ateliers.groups_text ? `<p class="lead">${esc(ateliers.groups_text)}</p>` : ""}<div class="cards">${ateliers.groups.map(group).join("")}</div>`, "paper")
     + (ateliers.kids ? section(`<h2>${esc(ateliers.kids_title)}</h2>${ateliers.kids_text ? `<p class="lead">${esc(ateliers.kids_text)}</p>` : ""}<div class="cards">${group(ateliers.kids)}</div>${ateliers.practical_note ? `<p class="lead">${esc(ateliers.practical_note)}</p>` : ""}`, "white") : "")
     + section(`<span class="eyebrow">Expérimenter</span><h2>${esc(ateliers.lab_title)}</h2><p class="lead lead--light">${esc(ateliers.lab_text)}</p>${ateliers.lab_details ? `<p class="lead lead--light">${esc(ateliers.lab_details)}</p>` : ""}`, "deep")
+    + faqSection(faq.ateliers_title, faq.ateliers, "paper")
     + section(`<h2>S'inscrire</h2><p class="lead">${esc(ateliers.register_text)}</p>${ateliers.register_details ? `<p class="lead">${esc(ateliers.register_details)}</p>` : ""}<p><a class="btn btn--primary" href="${esc(mailto("Inscription aux ateliers d'improvisation", "Bonjour,\n\nJe souhaite m'inscrire à l'atelier (improvisation débutants / avancés, théâtre enfants) :\n\nNom et prénom :\nTéléphone :\nUn mot sur vous (facultatif) :\n"))}">Écrire pour s'inscrire</a></p><p class="small">Ou directement à ${esc(mail)}</p>`, "white", "inscription");
-  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre classique pour enfants.", cur: "Ateliers", body });
+  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre classique pour enfants.", cur: "Ateliers", body, jsonld: [faqLD(faq.ateliers)] });
 }
 
 // ---------- SPECTACLES
@@ -165,8 +168,9 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     + section(`<h2>Nos formats</h2><div class="cards cards--3">${formats.map((f) => `<div class="card"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("")}</div>`, "paper")
     + spotHtml + rest
     + section(`<h2>Nos soirées en affiches</h2><div class="posters">${events.map(poster).join("")}</div>`, "white", "affiches")
+    + faqSection(faq.spectacles_title, faq.spectacles, "paper")
     + section(`<div class="reserve"><div><h2>Réserver votre place</h2><p class="lead lead--light">Les réservations se font par e-mail : écrivez-nous à <strong>${esc(mail)}</strong> avec la date du spectacle, votre nom et le nombre de places.${isUpcoming ? ` Prochaine date : ${esc(nextEv.title)}, le ${esc(nd.label.toLowerCase())} à ${esc(nd.time)}, ${esc(nextEv.venue)}${nextEv.price_label ? `, entrée ${esc(nextEv.price_label)}` : ""}.` : ""} Le tarif est indiqué sur l'affiche de chaque soirée.</p></div><a class="btn btn--primary btn--lg" href="${esc(reserveHref)}">Écrire pour réserver</a></div>`, "deep", "reservation");
-  pages.push({ file: "spectacles.html", title: "Spectacles d'improvisation à Villennes-sur-Seine", desc: "Cabarets, matchs et spectacles d'improvisation à la Salle des Arts de Villennes-sur-Seine : formats, photos, affiches et réservations.", cur: "Spectacles", body, jsonld: [eventLD].filter(Boolean) });
+  pages.push({ file: "spectacles.html", title: "Spectacles d'improvisation à Villennes-sur-Seine", desc: "Cabarets, matchs et spectacles d'improvisation à la Salle des Arts de Villennes-sur-Seine : formats, photos, affiches et réservations.", cur: "Spectacles", body, jsonld: [eventLD, faqLD(faq.spectacles)].filter(Boolean) });
 }
 
 // ---------- ASSOCIATION
