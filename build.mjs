@@ -160,7 +160,7 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     const kicker = [s.kicker, next].filter(Boolean).join(" · ");
     const gal = s.gallery && GAL[s.gallery];
     if (gal) used.add(gal.id);
-    return section(`<div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${kicker ? `<span class="kicker">${esc(kicker)}</span>` : ""}<h2 id="${esc(s.id)}">${esc(s.title)}</h2>${paras(s.text)}${s.credits ? `<p class="small">${inline(s.credits)}</p>` : ""}<p><a class="spot__more" href="/spectacles/${esc(s.id)}">Découvrir ce spectacle →</a></p></div></div>`, "white")
+    return section(`<div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${kicker ? `<span class="kicker">${esc(kicker)}</span>` : ""}<h2 id="${esc(s.id)}">${esc(s.title)}</h2><p>${inline(String(s.text).split(/\n\s*\n/)[0])}</p><p><a class="spot__more" href="/spectacles/${esc(s.id)}">Découvrir ce spectacle →</a></p></div></div>`, "white")
       + (gal ? gsec(gal) : "");
   };
   const gsec = (g) => section(`<h2${g.id === "cabaret-2026-10" ? ' id="photos"' : ""}>${esc(g.title)}</h2>${g.intro ? `<p class="lead${["ink", "deep"].includes(bgOf(g)) ? " lead--light" : ""}">${esc(g.intro)}</p>` : ""}${gallery(g)}`, bgOf(g));
