@@ -193,3 +193,4 @@ dialog.lb::backdrop{background:rgba(10,20,38,.96)}
 .lb__btn[hidden]{display:none}
 .lb__close{position:fixed;top:16px;right:16px;z-index:2}
 @media (max-width:640px){.lb__fig{max-width:100vw}.lb__prev,.lb__next{position:fixed;bottom:16px;width:46px;height:46px}.lb__prev{left:16px}.lb__next{right:16px}.lb__img{max-height:calc(100vh - 150px)}}
+@media (max-width:640px){.strip--match .strip__txt{flex:0 0 auto}}
