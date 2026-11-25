@@ -178,3 +178,4 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .card--link{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .15s}.card--link:hover{transform:translateY(-2px)}.card--link p{margin:0}
 .strip--match{background:#1E7CA0}
 .strip--match .strip__txt{flex:1 1 360px;font-size:19px;line-height:1.35}
+.thanks{border-left:4px solid var(--pink);padding-left:16px;font-weight:600;color:var(--ink)}

@@ -183,6 +183,7 @@ collections:
           - {label: "Introduction", name: intro, widget: string}
           - {label: "Notre histoire", name: history, widget: text}
           - {label: "Création (ex : Fondée en avril 2019)", name: founded, widget: string, required: false}
+          - {label: "Remerciements (sous le texte d'histoire)", name: thanks, widget: text, required: false}
           - label: "Valeurs"
             name: values
             widget: list
