@@ -65,4 +65,63 @@
     var on = strip.querySelector(".strip__on"), off = strip.querySelector(".strip__off");
     if (on && off) { on.hidden = over; off.hidden = !over; }
   }
+  // 3. Agrandissement des photos et affiches (fenêtre plein écran)
+  var zoomables = [].slice.call(document.querySelectorAll(".gallery img, .posters img, .spot__img, img.team"));
+  if (zoomables.length && typeof HTMLDialogElement === "function") {
+    var dlg = document.createElement("dialog");
+    dlg.className = "lb";
+    dlg.setAttribute("aria-label", "Photo agrandie");
+    dlg.innerHTML = '<button type="button" class="lb__btn lb__close" aria-label="Fermer">&times;</button>' +
+      '<button type="button" class="lb__btn lb__prev" aria-label="Photo précédente">&#8249;</button>' +
+      '<figure class="lb__fig"><img class="lb__img" alt=""><figcaption class="lb__cap"></figcaption></figure>' +
+      '<button type="button" class="lb__btn lb__next" aria-label="Photo suivante">&#8250;</button>';
+    document.body.appendChild(dlg);
+    var lbImg = dlg.querySelector(".lb__img"), lbCap = dlg.querySelector(".lb__cap");
+    var prevB = dlg.querySelector(".lb__prev"), nextB = dlg.querySelector(".lb__next");
+    var group = [], idx = 0;
+    var groupOf = function (img) {
+      var box = img.closest(".gallery, .posters");
+      return box ? [].slice.call(box.querySelectorAll("img")) : [img];
+    };
+    var show = function (i) {
+      idx = (i + group.length) % group.length;
+      var im = group[idx];
+      lbImg.src = im.currentSrc || im.src;
+      lbImg.alt = im.alt || "";
+      lbCap.textContent = group.length > 1 ? (idx + 1) + " / " + group.length : "";
+      prevB.hidden = nextB.hidden = group.length < 2;
+    };
+    var open = function (img) {
+      group = groupOf(img);
+      show(group.indexOf(img));
+      document.documentElement.classList.add("lb-open");
+      dlg.showModal();
+    };
+    zoomables.forEach(function (img) {
+      img.classList.add("zoomable");
+      img.setAttribute("tabindex", "0");
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-label", "Agrandir la photo" + (img.alt ? " : " + img.alt : ""));
+      img.addEventListener("click", function () { open(img); });
+      img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(img); } });
+    });
+    dlg.addEventListener("click", function (e) {
+      if (e.target === lbImg || e.target === lbCap) return;
+      if (e.target === prevB) return show(idx - 1);
+      if (e.target === nextB) return show(idx + 1);
+      dlg.close();
+    });
+    dlg.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft" && group.length > 1) show(idx - 1);
+      if (e.key === "ArrowRight" && group.length > 1) show(idx + 1);
+    });
+    dlg.addEventListener("close", function () { document.documentElement.classList.remove("lb-open"); lbImg.removeAttribute("src"); });
+    var tx = null;
+    dlg.addEventListener("touchstart", function (e) { tx = e.changedTouches[0].clientX; }, { passive: true });
+    dlg.addEventListener("touchend", function (e) {
+      if (tx === null || group.length < 2) return;
+      var dx = e.changedTouches[0].clientX - tx; tx = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  }
 })();
