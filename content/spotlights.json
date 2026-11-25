@@ -50,6 +50,19 @@
       "seo_title": "Match d'improvisation : L'Alibi du Mardi contre Paris Impro"
     },
     {
+      "id": "cabaret-chanteloup",
+      "kicker": "Cabaret d'improvisation · 10 avril 2026",
+      "title": "Cabaret à Chanteloup-les-Vignes",
+      "poster": "/images/affiches/cabaret-chanteloup-2026-04.jpg",
+      "poster_alt": "Affiche du cabaret d'improvisation de l'Alibi du Mardi à Chanteloup-les-Vignes, vendredi 10 avril, salle Le Phénix",
+      "text": "L'Alibi du Mardi a présenté son cabaret d'improvisation à Chanteloup-les-Vignes, à la salle Le Phénix : une succession de scènes courtes, avec catégories, contraintes et défis, sur des thèmes ou suggestions du public.\n\nUn format vivant, accessible et plein de surprises, où l'on vient pour rigoler.",
+      "credits": "Vendredi 10 avril 2026 · 20h30 · Salle Le Phénix, Chanteloup-les-Vignes · Réservation par e-mail.",
+      "show_next_date": false,
+      "gallery": "chanteloup",
+      "background": "white",
+      "seo_title": "Cabaret d'improvisation à Chanteloup-les-Vignes | L'Alibi du Mardi"
+    },
+    {
       "id": "spectacles-enfants",
       "kicker": "Groupes enfants et ados · coachés par Lilou",
       "title": "Les spectacles des groupes enfants",
