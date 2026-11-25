@@ -1,5 +1,7 @@
 (function () {
   "use strict";
+  // Suivi Google Tag Manager : n'envoie rien tant que le visiteur n'a pas accepté les cookies
+  var track = function () {};
   // 0. Menu burger (mobile)
   var header = document.querySelector(".header"), toggle = document.querySelector(".nav-toggle");
   if (header && toggle) {
@@ -21,6 +23,11 @@
     var load = function () {
       if (loaded) return; loaded = true;
       window.dataLayer = window.dataLayer || [];
+      track = function (name, params) {
+        var o = { event: name };
+        for (var k in params) if (Object.prototype.hasOwnProperty.call(params, k)) o[k] = params[k];
+        window.dataLayer.push(o);
+      };
       window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
       var s = document.createElement("script"); s.async = true;
       s.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtm);
@@ -83,9 +90,22 @@
       var box = img.closest(".gallery, .posters");
       return box ? [].slice.call(box.querySelectorAll("img")) : [img];
     };
-    var show = function (i) {
+    var photoInfo = function (im) {
+      var sec = im.closest("section"), h = sec && sec.querySelector("h2");
+      var parts = (im.getAttribute("src") || "").split("?")[0].split("/");
+      return {
+        photo_name: parts.slice(-2).join("/"),
+        photo_alt: (im.alt || "").slice(0, 100),
+        photo_section: h ? h.textContent.trim().slice(0, 80) : "",
+        photo_position: group.indexOf(im) + 1,
+        photo_count: group.length,
+        page_path: location.pathname
+      };
+    };
+    var show = function (i, how) {
       idx = (i + group.length) % group.length;
       var im = group[idx];
+      if (how) { var info = photoInfo(im); info.direction = how; track("photo_navigate", info); }
       lbImg.src = im.currentSrc || im.src;
       lbImg.alt = im.alt || "";
       lbCap.textContent = group.length > 1 ? (idx + 1) + " / " + group.length : "";
@@ -94,6 +114,7 @@
     var open = function (img) {
       group = groupOf(img);
       show(group.indexOf(img));
+      track("photo_open", photoInfo(img));
       document.documentElement.classList.add("lb-open");
       dlg.showModal();
     };
@@ -107,13 +128,13 @@
     });
     dlg.addEventListener("click", function (e) {
       if (e.target === lbImg || e.target === lbCap) return;
-      if (e.target === prevB) return show(idx - 1);
-      if (e.target === nextB) return show(idx + 1);
+      if (e.target === prevB) return show(idx - 1, "precedent");
+      if (e.target === nextB) return show(idx + 1, "suivant");
       dlg.close();
     });
     dlg.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft" && group.length > 1) show(idx - 1);
-      if (e.key === "ArrowRight" && group.length > 1) show(idx + 1);
+      if (e.key === "ArrowLeft" && group.length > 1) show(idx - 1, "precedent");
+      if (e.key === "ArrowRight" && group.length > 1) show(idx + 1, "suivant");
     });
     dlg.addEventListener("close", function () { document.documentElement.classList.remove("lb-open"); lbImg.removeAttribute("src"); });
     var tx = null;
@@ -121,7 +142,23 @@
     dlg.addEventListener("touchend", function (e) {
       if (tx === null || group.length < 2) return;
       var dx = e.changedTouches[0].clientX - tx; tx = null;
-      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1), dx < 0 ? "suivant" : "precedent");
     }, { passive: true });
   }
+  // 4. Suivi des clics utiles (e-mails, boutons, réseaux sociaux)
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a");
+    if (!a) return;
+    var href = a.getAttribute("href") || "", text = (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 80);
+    if (href.indexOf("mailto:") === 0) {
+      var subject = "";
+      try { subject = decodeURIComponent((/[?&]subject=([^&]*)/.exec(href) || [, ""])[1]); } catch (err) {}
+      var type = /^r[ée]servation/i.test(subject) ? "reservation" : /^inscription/i.test(subject) ? "inscription" : /^match/i.test(subject) ? "match" : /^prochaines/i.test(subject) ? "prochaines_dates" : "contact";
+      track("mailto_click", { mail_type: type, mail_subject: subject.slice(0, 100), link_text: text, page_path: location.pathname });
+    } else if (/instagram\.com|facebook\.com/.test(href)) {
+      track("social_click", { network: /instagram/.test(href) ? "instagram" : "facebook", page_path: location.pathname });
+    } else if (a.classList.contains("btn") || a.classList.contains("choice__card") || a.classList.contains("spot__more") || a.classList.contains("card--link")) {
+      track("cta_click", { link_text: text, link_url: href, page_path: location.pathname });
+    }
+  });
 })();
