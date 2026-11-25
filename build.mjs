@@ -125,7 +125,7 @@ const pages = [];
 <div class="hero__shade"></div>
 <div class="wrap hero__in"><span class="eyebrow">${esc(site.eyebrow)}</span>
 <h1>${esc(home.title_1)} <span>${esc(home.title_2)}</span></h1><p>${esc(home.intro)}</p>
-<div class="hero__cta"><a class="btn btn--primary" href="/spectacles">Découvrir nos spectacles</a><a class="btn btn--outline" href="/ateliers#inscription">Rejoindre les ateliers</a></div></div></section>
+<div class="hero__cta"><a class="btn btn--primary" href="/spectacles">Découvrir nos spectacles</a><a class="btn btn--outline" href="/ateliers#inscription">Rejoindre les ateliers</a><a class="btn btn--outline-pink" href="/ateliers#enfants">Voir l'offre enfants/ados</a></div></div></section>
 ${strip()}
 ${section(`<h2>Trois façons de rejoindre l'Alibi</h2><div class="cards">${home.cards.map((c) => `<div class="card"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p><a href="${esc(c.link)}">${esc(c.cta)} →</a></div>`).join("")}</div>`, "white")}
 ${hg ? section(`<div class="sec__row"><h2>${esc(home.photos_title)}</h2><a class="more" href="/spectacles#photos">Voir toutes les photos →</a></div><p class="lead">${esc(home.photos_text)}</p>${gallery(hg, home.photos_pick)}`, "paper") : ""}

@@ -171,3 +171,4 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .choice__card--kids{background:#D6296A;border-color:#D6296A;color:#fff}.choice__card--kids .choice__k,.choice__card--kids .choice__s,.choice__card--kids .choice__go{color:#fff}.choice__card--kids:hover{border-color:#fff}
 #adultes,#enfants,#inscription{scroll-margin-top:84px}
 @media (max-width:640px){.choice{grid-template-columns:1fr}.sec--choice .sec__in{padding-top:24px;padding-bottom:24px}}
+.btn--outline-pink{border-color:#E83A7A;color:#FF6FA3;padding:12px 24px;background:rgba(10,20,38,.55)}.btn--outline-pink:hover{background:#D6296A;border-color:#D6296A;color:#fff}
