@@ -57,13 +57,6 @@
       "alt": "Affiche du spectacle de théâtre immersif Léa et Léo : une cérémonie de mariage pas tout à fait comme les autres"
     },
     {
-      "title": "Crossings",
-      "date_label": "1er mai et 1er juin",
-      "details": "18h · Salle des Arts · Gratuit sur réservation",
-      "poster": "/images/affiches/crossings.jpg",
-      "alt": "Affiche de Crossings, spectacle improvisé"
-    },
-    {
       "title": "The Cruise",
       "date_label": "17 février",
       "details": "20h30 · Salle des Arts · 5 €",
@@ -97,6 +90,13 @@
       "details": "Salle des Arts · Entrée gratuite",
       "poster": "/images/affiches/festival-2024-06.jpg",
       "alt": "Affiche du festival de théâtre L'Alibi d'un week-end, 1er et 2 juin 2024"
+    },
+    {
+      "title": "Crossings",
+      "date_label": "1er mai et 1er juin 2024",
+      "details": "18h · Salle des Arts · Gratuit sur réservation",
+      "poster": "/images/affiches/crossings.jpg",
+      "alt": "Affiche de Crossings, spectacle improvisé"
     }
   ]
 }
