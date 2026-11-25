@@ -64,13 +64,6 @@
       "alt": "Affiche de Crossings, spectacle improvisé"
     },
     {
-      "title": "Crossings à l'Improvibar",
-      "date_label": "13 juin",
-      "details": "20h30 · L'Improvibar, Paris 4e",
-      "poster": "/images/affiches/crossings-improvibar.jpg",
-      "alt": "Affiche de Crossings à l'Improvibar, Paris : 13 juin, 20h30, quand l'extraordinaire se tisse dans l'ordinaire"
-    },
-    {
       "title": "The Cruise",
       "date_label": "17 février",
       "details": "20h30 · Salle des Arts · 5 €",
@@ -83,6 +76,13 @@
       "details": "18h · Salle des Arts · 5 €",
       "poster": "/images/affiches/shuffle-2024-11.jpg",
       "alt": "Affiche de Shuffle : 2 histoires, 8 personnages, 1000 possibilités"
+    },
+    {
+      "title": "Crossings à l'Improvibar",
+      "date_label": "Jeudi 13 juin 2024",
+      "details": "20h30 · L'Improvibar, Paris 4e",
+      "poster": "/images/affiches/crossings-improvibar.jpg",
+      "alt": "Affiche de Crossings à l'Improvibar, Paris : 13 juin, 20h30, quand l'extraordinaire se tisse dans l'ordinaire"
     },
     {
       "title": "Spectacles enfants",
