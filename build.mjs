@@ -63,7 +63,7 @@ ${ld}
 <a class="header__logo" href="/" aria-label="${esc(site.name)}, accueil"><img src="/images/logo-small.png" alt="${esc(site.name)}, ligue d'improvisation théâtrale" width="105" height="64"></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
 <nav class="nav" id="menu" aria-label="Navigation principale">${nav}</nav>
-<a class="btn btn--primary btn--sm header__cta" href="/ateliers#inscription">S'inscrire</a>
+<a class="btn btn--primary btn--sm header__cta" href="/ateliers">S'inscrire</a>
 </div></header>
 <main id="contenu">
 ${body}
