@@ -111,7 +111,7 @@ function matchStrip() {
 }
 
 // ---------- JSON-LD
-const orgLD = { "@context": "https://schema.org", "@type": "PerformingGroup", name: site.name, description: site.seo_description, email: mail, address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", addressRegion: "Yvelines", addressCountry: "FR" }, sameAs: [site.instagram, site.facebook].filter(Boolean), ...(BASE ? { url: BASE, logo: BASE + "/images/logo.png" } : {}) };
+const orgLD = { "@context": "https://schema.org", "@type": "PerformingGroup", name: site.name, description: site.seo_description, email: mail, alternateName: "Alibi du Mardi", address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", postalCode: "78670", addressRegion: "Yvelines", addressCountry: "FR" }, areaServed: [{ "@type": "AdministrativeArea", name: "Yvelines" }, { "@type": "AdministrativeArea", name: "Île-de-France" }], knowsAbout: ["improvisation théâtrale", "match d'improvisation", "cabaret d'improvisation", "théâtre pour enfants"], sameAs: [site.instagram, site.facebook].filter(Boolean), ...(BASE ? { url: BASE, logo: BASE + "/images/logo.png" } : {}) };
 function offsetFor(n) {
   const d = new Date(Date.UTC(n.y, n.mo - 1, n.d, 12));
   const part = new Intl.DateTimeFormat("en", { timeZone: "Europe/Paris", timeZoneName: "longOffset" }).formatToParts(d).find((p) => p.type === "timeZoneName").value;
@@ -136,7 +136,8 @@ ${strip()}
 ${section(`<h2>Trois façons de rejoindre l'Alibi</h2><div class="cards">${home.cards.map((c) => `<div class="card"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p><a href="${esc(c.link)}">${esc(c.cta)} →</a></div>`).join("")}</div>`, "white")}
 ${matchStrip()}
 ${hg ? section(`<div class="sec__row"><h2>${esc(home.photos_title)}</h2><a class="more" href="/spectacles#photos">Voir toutes les photos →</a></div><p class="lead">${esc(home.photos_text)}</p>${gallery(hg, home.photos_pick)}`, "paper") : ""}
-${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more" href="/spectacles#affiches">Toutes les affiches →</a></div><div class="posters">${events.slice(0, 4).map(poster).join("")}</div>`, "white")}`;
+${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more" href="/spectacles#affiches">Toutes les affiches →</a></div><div class="posters">${events.slice(0, 4).map(poster).join("")}</div>`, "white")}
+${home.local_text ? section(`<h2>${esc(home.local_title || "")}</h2>${paras(home.local_text).replace(/<p>/g, '<p class="lead">')}<p class="lead"><a class="more" href="/ateliers">Les ateliers</a> · <a class="more" href="/spectacles">Les spectacles</a> · <a class="more" href="/association">L'association</a></p>`, "paper") : ""}`;
   pages.push({ file: "index.html", title: site.seo_title, desc: site.seo_description, cur: "Accueil", body, jsonld: [orgLD, eventLD].filter(Boolean) });
 }
 
@@ -181,7 +182,7 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     + section(`<h2>Nos soirées en affiches</h2><div class="posters">${events.map(poster).join("")}</div>`, "white", "affiches")
     + faqSection(faq.spectacles_title, faq.spectacles, "paper")
     + reserveSec;
-  pages.push({ file: "spectacles.html", title: "Spectacles d'improvisation à Villennes-sur-Seine", desc: "Cabarets, matchs et spectacles d'improvisation à la Salle des Arts de Villennes-sur-Seine : formats, photos, affiches et réservations.", cur: "Spectacles", body, jsonld: [eventLD, faqLD(faq.spectacles)].filter(Boolean) });
+  pages.push({ file: "spectacles.html", title: "Spectacles d'improvisation à Villennes-sur-Seine (Yvelines)", desc: "Cabarets, matchs et spectacles d'improvisation dans les Yvelines, à la Salle des Arts de Villennes-sur-Seine : formats, photos, affiches et réservations.", cur: "Spectacles", body, jsonld: [eventLD, faqLD(faq.spectacles)].filter(Boolean) });
   // ---- une page par spectacle
   const plain = (t) => String(t || "").replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
   const excerpt = (t, n) => { const p = plain(String(t || "").split(/\n\s*\n/)[0]); if (p.length <= n) return p; const cut = p.slice(0, n).replace(/\s+\S*$/, ""); return cut + "…"; };
