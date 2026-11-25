@@ -4,7 +4,7 @@ backend:
   name: github
   repo: AntoneLep78/lalibidumardi
   branch: main
-  base_url: https://lalibidumardi.vercel.app   # puis votre nom de domaine quand il sera branché
+  base_url: https://lalibidumardi.fr
   auth_endpoint: api/auth
 
 locale: fr
