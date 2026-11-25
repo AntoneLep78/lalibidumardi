@@ -115,6 +115,7 @@ function offsetFor(n) {
 const eventLD = isUpcoming ? { "@context": "https://schema.org", "@type": "TheaterEvent", name: `${nextEv.title}, spectacle d'improvisation`, startDate: `${nd.iso}:00${offsetFor(nd)}`, eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", location: { "@type": "Place", name: nextEv.venue, address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", addressCountry: "FR" } }, organizer: { "@type": "Organization", name: site.name }, ...(nextEv.price_eur != null && nextEv.price_eur !== "" ? { offers: { "@type": "Offer", price: String(nextEv.price_eur), priceCurrency: "EUR", availability: "https://schema.org/InStock" } } : {}) } : null;
 
 const pages = [];
+const SPEC_URLS = [];
 
 // ---------- ACCUEIL
 {
@@ -159,10 +160,11 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     const kicker = [s.kicker, next].filter(Boolean).join(" · ");
     const gal = s.gallery && GAL[s.gallery];
     if (gal) used.add(gal.id);
-    return section(`<div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${kicker ? `<span class="kicker">${esc(kicker)}</span>` : ""}<h2 id="${esc(s.id)}">${esc(s.title)}</h2>${paras(s.text)}${s.credits ? `<p class="small">${inline(s.credits)}</p>` : ""}</div></div>`, "white")
+    return section(`<div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${kicker ? `<span class="kicker">${esc(kicker)}</span>` : ""}<h2 id="${esc(s.id)}">${esc(s.title)}</h2>${paras(s.text)}${s.credits ? `<p class="small">${inline(s.credits)}</p>` : ""}<p><a class="spot__more" href="/spectacles/${esc(s.id)}">Découvrir ce spectacle →</a></p></div></div>`, "white")
       + (gal ? gsec(gal) : "");
   };
   const gsec = (g) => section(`<h2${g.id === "cabaret-2026-10" ? ' id="photos"' : ""}>${esc(g.title)}</h2>${g.intro ? `<p class="lead${["ink", "deep"].includes(bgOf(g)) ? " lead--light" : ""}">${esc(g.intro)}</p>` : ""}${gallery(g)}`, bgOf(g));
+  const reserveSec = section(`<div class="reserve"><div><h2>Réserver votre place</h2><p class="lead lead--light">Les réservations se font par e-mail : écrivez-nous à <strong>${esc(mail)}</strong> avec la date du spectacle, votre nom et le nombre de places.${isUpcoming ? ` Prochaine date : ${esc(nextEv.title)}, le ${esc(nd.label.toLowerCase())} à ${esc(nd.time)}, ${esc(nextEv.venue)}${nextEv.price_label ? `, entrée ${esc(nextEv.price_label)}` : ""}.` : ""} Le tarif est indiqué sur l'affiche de chaque soirée.</p></div><a class="btn btn--primary btn--lg" href="${esc(reserveHref)}">Écrire pour réserver</a></div>`, "deep", "reservation");
   const spotHtml = spotlights.map(spot).join("");
   const rest = galleries.filter((g) => !used.has(g.id)).map(gsec).join("");
   const body = pagehead("Spectacles et réservations", "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.")
@@ -171,8 +173,28 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
     + spotHtml + rest
     + section(`<h2>Nos soirées en affiches</h2><div class="posters">${events.map(poster).join("")}</div>`, "white", "affiches")
     + faqSection(faq.spectacles_title, faq.spectacles, "paper")
-    + section(`<div class="reserve"><div><h2>Réserver votre place</h2><p class="lead lead--light">Les réservations se font par e-mail : écrivez-nous à <strong>${esc(mail)}</strong> avec la date du spectacle, votre nom et le nombre de places.${isUpcoming ? ` Prochaine date : ${esc(nextEv.title)}, le ${esc(nd.label.toLowerCase())} à ${esc(nd.time)}, ${esc(nextEv.venue)}${nextEv.price_label ? `, entrée ${esc(nextEv.price_label)}` : ""}.` : ""} Le tarif est indiqué sur l'affiche de chaque soirée.</p></div><a class="btn btn--primary btn--lg" href="${esc(reserveHref)}">Écrire pour réserver</a></div>`, "deep", "reservation");
+    + reserveSec;
   pages.push({ file: "spectacles.html", title: "Spectacles d'improvisation à Villennes-sur-Seine", desc: "Cabarets, matchs et spectacles d'improvisation à la Salle des Arts de Villennes-sur-Seine : formats, photos, affiches et réservations.", cur: "Spectacles", body, jsonld: [eventLD, faqLD(faq.spectacles)].filter(Boolean) });
+  // ---- une page par spectacle
+  const plain = (t) => String(t || "").replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+  const excerpt = (t, n) => { const p = plain(String(t || "").split(/\n\s*\n/)[0]); if (p.length <= n) return p; const cut = p.slice(0, n).replace(/\s+\S*$/, ""); return cut + "…"; };
+  for (const s of spotlights) {
+    const gal = s.gallery && GAL[s.gallery];
+    const upcoming = s.show_next_date && isUpcoming;
+    const sub = s.kicker || "Spectacle d'improvisation à la Salle des Arts de Villennes-sur-Seine";
+    const cta = upcoming
+      ? `<a class="btn btn--primary" href="${esc(reserveHref)}">Réserver pour le ${esc(nd.label.toLowerCase())}</a>`
+      : `<a class="btn btn--primary" href="${esc(mailto("Prochaines dates : " + s.title))}">Être prévenu des prochaines dates</a>`;
+    const others = spotlights.filter((o) => o.id !== s.id).map((o) => `<a class="card card--link" href="/spectacles/${esc(o.id)}"><h3>${esc(o.title)}</h3><p>${esc(excerpt(o.text, 120))}</p><span class="choice__go">Découvrir →</span></a>`).join("");
+    const body = pagehead(s.title, sub)
+      + section(`<p class="crumb"><a href="/spectacles">← Tous les spectacles</a></p><div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${upcoming ? `<span class="kicker">Prochaine représentation : ${esc(nd.label.toLowerCase())}</span>` : ""}<h2>Le spectacle</h2>${paras(s.text)}${s.credits ? `<p class="small">${inline(s.credits)}</p>` : ""}<p>${cta}</p></div></div>`, "white")
+      + (gal ? gsec(gal) : "")
+      + section(`<h2>Les autres spectacles</h2><div class="cards cards--3">${others}</div><p><a class="spot__more" href="/spectacles">Voir tous les spectacles et les affiches →</a></p>`, "paper")
+      + reserveSec;
+    const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: BASE + "/" }, { "@type": "ListItem", position: 2, name: "Spectacles", item: BASE + "/spectacles" }, { "@type": "ListItem", position: 3, name: s.title, item: BASE + "/spectacles/" + s.id }] };
+    pages.push({ file: `spectacles/${s.id}.html`, title: s.seo_title || `${s.title} | Spectacle d'improvisation à Villennes-sur-Seine`, desc: s.seo_desc || excerpt(s.text, 155), cur: "Spectacles", body, ogImage: s.poster, jsonld: [BASE && crumbs, upcoming && eventLD].filter(Boolean) });
+    SPEC_URLS.push("/spectacles/" + s.id);
+  }
 }
 
 // ---------- ASSOCIATION
@@ -200,8 +222,8 @@ ${site.gtm_id ? `<h2 id="cookies">Cookies et mesure d'audience</h2><p>Avec votre
 const DIST = path.join(ROOT, "dist");
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.cpSync(path.join(ROOT, "public"), DIST, { recursive: true });
-for (const p of pages) fs.writeFileSync(path.join(DIST, p.file), layout(p));
-const urls = ["/", "/ateliers", "/spectacles", "/association", "/mentions-legales"];
+for (const p of pages) { const out = path.join(DIST, p.file); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, layout(p)); }
+const urls = ["/", "/ateliers", "/spectacles", ...SPEC_URLS, "/association", "/mentions-legales"];
 if (BASE) {
   fs.writeFileSync(path.join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${BASE}${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 }

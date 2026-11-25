@@ -143,6 +143,8 @@ collections:
               - {label: "Afficher la prochaine date du bandeau", name: show_next_date, widget: boolean, default: false}
               - {label: "Identifiant de la galerie photo associée", name: gallery, widget: string, required: false}
               - {label: "Couleur de fond", name: background, widget: select, options: [white, paper], default: white}
+              - {label: "Titre pour Google (facultatif, 60 caractères environ)", name: seo_title, widget: string, required: false}
+              - {label: "Description pour Google (facultatif, 155 caractères environ)", name: seo_desc, widget: text, required: false}
 
   - name: faq_c
     label: "Questions fréquentes"

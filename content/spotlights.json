@@ -46,7 +46,8 @@
       "credits": "Vendredi 29 mai 2026 · 20h30 · Salle des Arts · Entrée 5 €",
       "show_next_date": false,
       "gallery": "match-paris-impro-2026-05",
-      "background": "white"
+      "background": "white",
+      "seo_title": "Match d'improvisation : L'Alibi du Mardi contre Paris Impro"
     },
     {
       "id": "spectacles-enfants",
@@ -58,7 +59,8 @@
       "credits": "Pièces écrites et mises en scène par **Lilou de Burlet** · Salle des Arts",
       "show_next_date": false,
       "gallery": "",
-      "background": "paper"
+      "background": "paper",
+      "seo_title": "Spectacles de théâtre enfants et ados | Villennes-sur-Seine"
     }
   ]
 }

@@ -172,3 +172,7 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 #adultes,#enfants,#inscription{scroll-margin-top:84px}
 @media (max-width:640px){.choice{grid-template-columns:1fr}.sec--choice .sec__in{padding-top:24px;padding-bottom:24px}}
 .btn--outline-pink{border-color:#E83A7A;color:#FF6FA3;padding:12px 24px;background:rgba(10,20,38,.55)}.btn--outline-pink:hover{background:#D6296A;border-color:#D6296A;color:#fff}
+
+.spot__more{font-weight:800;font-size:16px;color:var(--pink);text-decoration:none}.spot__more:hover{text-decoration:underline}
+.crumb{margin:0 0 8px;font-size:15px}.crumb a{color:var(--pink);font-weight:700;text-decoration:none}.crumb a:hover{text-decoration:underline}
+.card--link{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .15s}.card--link:hover{transform:translateY(-2px)}.card--link p{margin:0}
