@@ -90,7 +90,7 @@ const pagehead = (h1, sub, img = "") => {
 };
 const faqSection = (title, items, bg) => section(`<h2>${esc(title)}</h2><div class="faq">${items.map((i) => `<details><summary>${esc(i.q)}</summary><p>${inline(i.a)}</p></details>`).join("")}</div>`, bg, "faq");
 const faqLD = (items) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items.map((i) => ({ "@type": "Question", name: i.q, acceptedAnswer: { "@type": "Answer", text: i.a } })) });
-const poster = (e) => `<article class="poster"><img src="${esc(e.poster)}" alt="${esc(e.alt)}" loading="lazy"><div><h3>${esc(e.title)}</h3><p>${esc([e.date_label, e.details].filter(Boolean).join(" · "))}</p></div></article>`;
+const poster = (e) => `<article class="poster"><img src="${esc(e.poster)}" alt="${esc(e.alt)}" loading="lazy"><div><h3>${esc(e.title)}</h3><p>${esc([e.date_label, e.details].filter(Boolean).join(" · "))}</p>${e.link ? `<a class="poster__link" href="${esc(e.link)}">Voir la page du spectacle →</a>` : ""}</div></article>`;
 const gallery = (g, pick) => {
   const list = pick ? pick.map((n) => g.photos.find((p) => p.endsWith("/" + n + ".jpg"))).filter(Boolean) : g.photos;
   const cls = g.photos.length === 1 ? "gallery gallery--single" : "gallery" + (g.crop ? " gallery--crop" : "") + (pick && list.length === 6 ? " gallery--3" : "");

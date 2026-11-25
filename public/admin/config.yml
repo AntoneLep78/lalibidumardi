@@ -47,6 +47,7 @@ collections:
               - {label: "Détails", name: details, widget: string, hint: "Ex : 20h30 · Salle des Arts · 5 €"}
               - {label: "Affiche", name: poster, widget: image}
               - {label: "Description de l'image (accessibilité)", name: alt, widget: string}
+              - {label: "Lien vers la page du spectacle (facultatif)", name: link, widget: string, required: false, hint: "Ex : /spectacles/la-seance"}
 
   - name: photos
     label: "Photos"

@@ -12,21 +12,24 @@
       "date_label": "Vendredi 29 mai 2026",
       "details": "20h30 · Salle des Arts · 5 €",
       "poster": "/images/affiches/match-2026-05.jpg",
-      "alt": "Affiche du match d'improvisation L'Alibi contre Paris Impro"
+      "alt": "Affiche du match d'improvisation L'Alibi contre Paris Impro",
+      "link": "/spectacles/match-paris-impro"
     },
     {
       "title": "Cabaret d'impro à Chanteloup",
       "date_label": "Vendredi 10 avril 2026",
       "details": "20h30 · Salle Le Phénix, Chanteloup-les-Vignes",
       "poster": "/images/affiches/cabaret-chanteloup-2026-04.jpg",
-      "alt": "Affiche du cabaret d'improvisation à Chanteloup-les-Vignes, vendredi 10 avril, salle Le Phénix"
+      "alt": "Affiche du cabaret d'improvisation à Chanteloup-les-Vignes, vendredi 10 avril, salle Le Phénix",
+      "link": "/spectacles/cabaret-chanteloup"
     },
     {
       "title": "La Séance",
       "date_label": "17 janvier 2026",
       "details": "20h30 · Salle des Arts · 8 €",
       "poster": "/images/affiches/la-seance-2026-01.jpg",
-      "alt": "Affiche du spectacle La Séance, 17 janvier 2026"
+      "alt": "Affiche du spectacle La Séance, 17 janvier 2026",
+      "link": "/spectacles/la-seance"
     },
     {
       "title": "Cabaret, saison 2",
@@ -40,7 +43,8 @@
       "date_label": "Dimanche 29 juin 2025",
       "details": "15h · Salle des Arts · Entrée sur réservation",
       "poster": "/images/affiches/spectacles-enfants-2025-06.jpg",
-      "alt": "Affiche des spectacles enfants de L'Alibi du Mardi : En avant marche ! et Une histoire sans queue ni tête"
+      "alt": "Affiche des spectacles enfants de L'Alibi du Mardi : En avant marche ! et Une histoire sans queue ni tête",
+      "link": "/spectacles/spectacles-enfants"
     },
     {
       "title": "Cabaret d'impro",
@@ -68,21 +72,24 @@
       "date_label": "Dimanche 17 novembre 2024",
       "details": "18h · Salle des Arts · 5 €",
       "poster": "/images/affiches/shuffle-2024-11.jpg",
-      "alt": "Affiche de Shuffle : 2 histoires, 8 personnages, 1000 possibilités"
+      "alt": "Affiche de Shuffle : 2 histoires, 8 personnages, 1000 possibilités",
+      "link": "/spectacles/shuffle"
     },
     {
       "title": "Crossings à l'Improvibar",
       "date_label": "Jeudi 13 juin 2024",
       "details": "20h30 · L'Improvibar, Paris 4e",
       "poster": "/images/affiches/crossings-improvibar.jpg",
-      "alt": "Affiche de Crossings à l'Improvibar, Paris : 13 juin, 20h30, quand l'extraordinaire se tisse dans l'ordinaire"
+      "alt": "Affiche de Crossings à l'Improvibar, Paris : 13 juin, 20h30, quand l'extraordinaire se tisse dans l'ordinaire",
+      "link": "/spectacles/crossings"
     },
     {
       "title": "Spectacles enfants",
       "date_label": "Samedi 1er et dimanche 2 juin 2024",
       "details": "14h · Salle des Arts",
       "poster": "/images/affiches/spectacles-enfants-2024-06.jpg",
-      "alt": "Affiche des spectacles enfants de juin 2024 : Au pied de la lettre, Rendez-vous contes et Prolepse"
+      "alt": "Affiche des spectacles enfants de juin 2024 : Au pied de la lettre, Rendez-vous contes et Prolepse",
+      "link": "/spectacles/spectacles-enfants"
     },
     {
       "title": "Festival d'un week-end",
@@ -96,7 +103,8 @@
       "date_label": "1er mai et 1er juin 2024",
       "details": "18h · Salle des Arts · Gratuit sur réservation",
       "poster": "/images/affiches/crossings.jpg",
-      "alt": "Affiche de Crossings, spectacle improvisé"
+      "alt": "Affiche de Crossings, spectacle improvisé",
+      "link": "/spectacles/crossings"
     }
   ]
 }
