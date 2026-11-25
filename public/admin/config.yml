@@ -210,6 +210,9 @@ collections:
           - {label: "Titre, première ligne", name: title_1, widget: string}
           - {label: "Titre, seconde ligne (en rose)", name: title_2, widget: string}
           - {label: "Texte d'introduction", name: intro, widget: text}
+          - {label: "Bandeau rencontres entre troupes : sur-titre", name: match_kicker, widget: string, required: false}
+          - {label: "Bandeau rencontres entre troupes : texte (laissez vide pour masquer le bandeau)", name: match_text, widget: text, required: false}
+          - {label: "Bandeau rencontres entre troupes : bouton", name: match_cta, widget: string, required: false}
           - label: "Trois cartes"
             name: cards
             widget: list

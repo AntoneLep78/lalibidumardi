@@ -32,5 +32,8 @@
     "03",
     "08",
     "02"
-  ]
+  ],
+  "match_kicker": "Match d'impro",
+  "match_text": "Vous avez une troupe, une équipe, et souhaitez nous défier en match d'impro ? Chouette, on est partants !",
+  "match_cta": "Nous rencontrer"
 }
