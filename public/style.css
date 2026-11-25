@@ -159,3 +159,15 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .faq details[open] summary::after{content:"\2212"}
 .faq summary:focus-visible{outline:3px solid var(--pinkl);outline-offset:2px;border-radius:8px}
 .faq details p{margin:0 0 20px;font-size:16px;line-height:1.55;color:var(--muted)}
+
+.sec--choice{background:#fff}.sec--choice .sec__in{padding-top:32px;padding-bottom:32px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.choice__card{display:flex;flex-direction:column;gap:6px;padding:26px 28px;border-radius:16px;background:var(--paper);border:2px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .15s,border-color .15s}
+.choice__card:hover{transform:translateY(-2px);border-color:var(--pink)}
+.choice__card strong{font-size:clamp(26px,4vw,34px);line-height:1.05;letter-spacing:-.01em}
+.choice__k{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pink)}
+.choice__s{font-size:15px;line-height:1.45;color:var(--muted)}
+.choice__go{margin-top:8px;font-weight:800;font-size:15px;color:var(--pink)}
+.choice__card--kids{background:#D6296A;border-color:#D6296A;color:#fff}.choice__card--kids .choice__k,.choice__card--kids .choice__s,.choice__card--kids .choice__go{color:#fff}.choice__card--kids:hover{border-color:#fff}
+#adultes,#enfants,#inscription{scroll-margin-top:84px}
+@media (max-width:640px){.choice{grid-template-columns:1fr}.sec--choice .sec__in{padding-top:24px;padding-bottom:24px}}
