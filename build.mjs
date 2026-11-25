@@ -105,6 +105,11 @@ function strip() {
 <div class="strip__on"${isUpcoming ? "" : " hidden"}>${on}</div><div class="strip__off"${isUpcoming ? " hidden" : ""}>${off}</div></div></section>`;
 }
 
+function matchStrip() {
+  if (!home.match_text) return "";
+  return `<section class="strip strip--match" aria-label="Rencontres entre troupes"><div class="wrap strip__in"><span class="strip__k">${esc(home.match_kicker || "")}</span><span class="strip__txt">${esc(home.match_text)}</span><a class="btn btn--dark btn--sm" href="${esc(mailto("Match d'improvisation : proposition de rencontre", "Bonjour,\n\nNous sommes une troupe d'improvisation et aimerions vous défier en match.\n\nNom de la troupe :\nVille :\nNombre de joueurs :\nDates possibles :\n"))}">${esc(home.match_cta || "Nous rencontrer")}</a></div></section>`;
+}
+
 // ---------- JSON-LD
 const orgLD = { "@context": "https://schema.org", "@type": "PerformingGroup", name: site.name, description: site.seo_description, email: mail, address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", addressRegion: "Yvelines", addressCountry: "FR" }, sameAs: [site.instagram, site.facebook].filter(Boolean), ...(BASE ? { url: BASE, logo: BASE + "/images/logo.png" } : {}) };
 function offsetFor(n) {
@@ -129,7 +134,7 @@ const SPEC_URLS = [];
 <div class="hero__cta"><a class="btn btn--primary" href="/spectacles">Découvrir nos spectacles</a><a class="btn btn--outline" href="/ateliers#inscription">Rejoindre les ateliers</a><a class="btn btn--outline-pink" href="/ateliers#enfants">Voir l'offre enfants/ados</a></div></div></section>
 ${strip()}
 ${section(`<h2>Trois façons de rejoindre l'Alibi</h2><div class="cards">${home.cards.map((c) => `<div class="card"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p><a href="${esc(c.link)}">${esc(c.cta)} →</a></div>`).join("")}</div>`, "white")}
-${home.match_text ? `<section class="strip strip--match" aria-label="Rencontres entre troupes"><div class="wrap strip__in"><span class="strip__k">${esc(home.match_kicker || "")}</span><span class="strip__txt">${esc(home.match_text)}</span><a class="btn btn--dark btn--sm" href="${esc(mailto("Match d'improvisation : proposition de rencontre", "Bonjour,\n\nNous sommes une troupe d'improvisation et aimerions vous défier en match.\n\nNom de la troupe :\nVille :\nNombre de joueurs :\nDates possibles :\n"))}">${esc(home.match_cta || "Nous rencontrer")}</a></div></section>` : ""}
+${matchStrip()}
 ${hg ? section(`<div class="sec__row"><h2>${esc(home.photos_title)}</h2><a class="more" href="/spectacles#photos">Voir toutes les photos →</a></div><p class="lead">${esc(home.photos_text)}</p>${gallery(hg, home.photos_pick)}`, "paper") : ""}
 ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more" href="/spectacles#affiches">Toutes les affiches →</a></div><div class="posters">${events.slice(0, 4).map(poster).join("")}</div>`, "white")}`;
   pages.push({ file: "index.html", title: site.seo_title, desc: site.seo_description, cur: "Accueil", body, jsonld: [orgLD, eventLD].filter(Boolean) });
@@ -171,6 +176,7 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
   const body = pagehead("Spectacles et réservations", "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.")
     + strip()
     + section(`<h2>Nos formats</h2><div class="cards cards--3">${formats.map((f) => `<div class="card"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("")}</div>`, "paper")
+    + matchStrip()
     + spotHtml + rest
     + section(`<h2>Nos soirées en affiches</h2><div class="posters">${events.map(poster).join("")}</div>`, "white", "affiches")
     + faqSection(faq.spectacles_title, faq.spectacles, "paper")
@@ -191,7 +197,8 @@ ${section(`<div class="sec__row"><h2>Nos dernières soirées</h2><a class="more"
       + section(`<p class="crumb"><a href="/spectacles">← Tous les spectacles</a></p><div class="spot"><img class="spot__img" src="${esc(s.poster)}" alt="${esc(s.poster_alt)}" loading="lazy"><div class="spot__txt">${upcoming ? `<span class="kicker">Prochaine représentation : ${esc(nd.label.toLowerCase())}</span>` : ""}<h2>Le spectacle</h2>${paras(s.text)}${s.credits ? `<p class="small">${inline(s.credits)}</p>` : ""}<p>${cta}</p></div></div>`, "white")
       + (gal ? gsec(gal) : "")
       + section(`<h2>Les autres spectacles</h2><div class="cards cards--3">${others}</div><p><a class="spot__more" href="/spectacles">Voir tous les spectacles et les affiches →</a></p>`, "paper")
-      + reserveSec;
+      + reserveSec
+      + matchStrip();
     const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: BASE + "/" }, { "@type": "ListItem", position: 2, name: "Spectacles", item: BASE + "/spectacles" }, { "@type": "ListItem", position: 3, name: s.title, item: BASE + "/spectacles/" + s.id }] };
     pages.push({ file: `spectacles/${s.id}.html`, title: s.seo_title || `${s.title} | Spectacle d'improvisation à Villennes-sur-Seine`, desc: s.seo_desc || excerpt(s.text, 155), cur: "Spectacles", body, ogImage: s.poster, jsonld: [BASE && crumbs, upcoming && eventLD].filter(Boolean) });
     SPEC_URLS.push("/spectacles/" + s.id);
