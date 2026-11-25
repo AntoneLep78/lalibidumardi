@@ -162,3 +162,18 @@
     }
   });
 })();
+
+/* Ancres : les images "lazy" au-dessus de la cible decalent la page. On les charge, puis on recale. */
+(function () {
+  var id = location.hash && location.hash.slice(1);
+  if (!id) return;
+  var target = document.getElementById(id);
+  if (!target) return;
+  var imgs = document.querySelectorAll('img[loading="lazy"]');
+  for (var i = 0; i < imgs.length; i++) {
+    if (imgs[i].compareDocumentPosition(target) & 4) imgs[i].loading = "eager";
+  }
+  var go = function () { target.scrollIntoView(); };
+  if (document.readyState === "complete") go();
+  else window.addEventListener("load", go);
+})();
