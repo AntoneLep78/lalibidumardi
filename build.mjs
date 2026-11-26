@@ -118,7 +118,11 @@ function offsetFor(n) {
   const part = new Intl.DateTimeFormat("en", { timeZone: "Europe/Paris", timeZoneName: "longOffset" }).formatToParts(d).find((p) => p.type === "timeZoneName").value;
   return part.replace("GMT", "") || "+00:00";
 }
-const eventLD = isUpcoming ? { "@context": "https://schema.org", "@type": "TheaterEvent", name: `${nextEv.title}, spectacle d'improvisation`, startDate: `${nd.iso}:00${offsetFor(nd)}`, eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", location: { "@type": "Place", name: nextEv.venue, address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", addressCountry: "FR" } }, organizer: { "@type": "Organization", name: site.name }, ...(nextEv.price_eur != null && nextEv.price_eur !== "" ? { offers: { "@type": "Offer", price: String(nextEv.price_eur), priceCurrency: "EUR", availability: "https://schema.org/InStock" } } : {}) } : null;
+const evSpot = spotlights.find((x) => x.title === nextEv.title);
+const evUrl = BASE + (evSpot ? "/spectacles/" + evSpot.id : "/spectacles");
+const evDesc = (() => { const t = String((evSpot && evSpot.text) || "").split(/\n\s*\n/)[0].replace(/\*\*/g, "").replace(/\s+/g, " ").trim(); if (!t) return `${nextEv.title}, spectacle d'improvisation de L'Alibi du Mardi à ${nextEv.venue}, Villennes-sur-Seine.`; return t.length <= 300 ? t : t.slice(0, 300).replace(/\s+\S*$/, "") + "…"; })();
+const evImg = BASE + ((evSpot && evSpot.poster) || "/images/hero.jpg");
+const eventLD = isUpcoming ? { "@context": "https://schema.org", "@type": "TheaterEvent", name: `${nextEv.title}, spectacle d'improvisation`, description: evDesc, image: [evImg], url: evUrl, performer: { "@type": "PerformingGroup", name: site.name, url: BASE + "/" }, startDate: `${nd.iso}:00${offsetFor(nd)}`, ...(nextEv.end_time ? { endDate: `${nd.iso.slice(0, 10)}T${nextEv.end_time}:00${offsetFor(nd)}` } : {}), eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", location: { "@type": "Place", name: nextEv.venue, address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", addressCountry: "FR" } }, organizer: { "@type": "Organization", name: site.name }, ...(nextEv.price_eur != null && nextEv.price_eur !== "" ? { offers: { "@type": "Offer", url: evUrl, price: String(nextEv.price_eur), priceCurrency: "EUR", availability: "https://schema.org/InStock" } } : {}) } : null;
 
 const pages = [];
 const SPEC_URLS = [];
