@@ -36,15 +36,17 @@
   "register_details": "Cotisation annuelle : 310 € pour tous les ateliers.",
   "groups_title": "Initiez-vous à l'improvisation théâtrale !",
   "groups_text": "Lâcher prise, confiance en soi et dans le groupe, prise de parole en public, imagination : venez découvrir de nouveaux talents jusqu'alors inexplorés. Le coach vous guide pas à pas, à votre rythme, vers de nouveaux terrains de jeu, pour créer et vivre des aventures dans l'instant, à l'instinct.",
-  "kids_title": "Les ateliers théâtre « classiques »",
-  "kids_text": "L'Alibi du Mardi propose également des ateliers enfants de théâtre classique. Ils aboutissent à une représentation du travail réalisé pendant l'année, sous la forme d'une pièce de théâtre.",
+  "kids_title": "Les ateliers théâtre",
+  "kids_text": "L'Alibi du Mardi propose également des ateliers théâtre pour les enfants et les ados. Ils aboutissent à une représentation du travail réalisé pendant l'année, sous la forme d'une pièce de théâtre.",
   "kids": {
     "name": "Atelier enfants",
     "subtitle": "Coach Lilou, atelier hebdo",
     "points": [
-      "La notion de jeu d'acteur et la technique",
-      "Les personnages et leur caractérisation, leurs émotions et états d'âme, leurs relations",
-      "L'analyse de textes"
+      "Ateliers ludiques pour explorer l'espace, le corps et la voix",
+      "Développer la concentration, la mémoire et l'écoute",
+      "Cultiver l'expression, l'imaginaire et la créativité",
+      "Prendre confiance en soi et oser s'exprimer devant les autres",
+      "Découvrir les jeux de scène et l'interprétation de personnages"
     ],
     "infos": [
       "Le mercredi",

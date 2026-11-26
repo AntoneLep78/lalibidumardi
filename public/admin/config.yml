@@ -94,9 +94,9 @@ collections:
               - {label: "Sous-titre", name: subtitle, widget: string}
               - {label: "Contenu des séances", name: points, widget: list, field: {label: Point, name: point, widget: string}}
               - {label: "Infos pratiques (jour, horaires, lieu, tarif : une ligne chacun)", name: infos, widget: list, required: false, field: {label: Info, name: info, widget: string}}
-          - {label: "Théâtre classique : titre de la section", name: kids_title, widget: string}
-          - {label: "Théâtre classique : texte", name: kids_text, widget: text, required: false}
-          - label: "Théâtre classique : atelier"
+          - {label: "Enfants/ados : titre de la section", name: kids_title, widget: string}
+          - {label: "Enfants/ados : texte", name: kids_text, widget: text, required: false}
+          - label: "Enfants/ados : atelier"
             name: kids
             widget: object
             fields:
