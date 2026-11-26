@@ -3,6 +3,7 @@
   "title": "La Séance",
   "date": "2027-01-23T20:30",
   "end_time": "22:30",
+  "sales_start": "2026-11-01",
   "venue": "Salle des Arts",
   "price_label": "8 €",
   "price_eur": 8
