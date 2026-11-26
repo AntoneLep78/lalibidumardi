@@ -112,7 +112,7 @@ function matchStrip() {
 }
 
 // ---------- JSON-LD
-const orgLD = { "@context": "https://schema.org", "@type": "PerformingGroup", name: site.name, description: site.seo_description, email: mail, alternateName: "Alibi du Mardi", address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", postalCode: "78670", addressRegion: "Yvelines", addressCountry: "FR" }, areaServed: [{ "@type": "AdministrativeArea", name: "Yvelines" }, { "@type": "AdministrativeArea", name: "Île-de-France" }], knowsAbout: ["improvisation théâtrale", "match d'improvisation", "cabaret d'improvisation", "théâtre pour enfants"], sameAs: [site.instagram, site.facebook].filter(Boolean), ...(BASE ? { url: BASE, logo: BASE + "/images/logo.png" } : {}) };
+const orgLD = { "@context": "https://schema.org", "@type": "PerformingGroup", name: site.name, description: site.seo_description, email: mail, alternateName: "Alibi du Mardi", address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", postalCode: "78670", addressRegion: "Yvelines", addressCountry: "FR" }, areaServed: [{ "@type": "AdministrativeArea", name: "Yvelines" }, { "@type": "AdministrativeArea", name: "Île-de-France" }], knowsAbout: ["improvisation théâtrale", "match d'improvisation", "cabaret d'improvisation", "théâtre pour enfants"], sameAs: [site.instagram, site.facebook].filter(Boolean), contactPoint: { "@type": "ContactPoint", contactType: "réservations et inscriptions", email: mail, availableLanguage: "fr" }, ...(BASE ? { url: BASE, logo: BASE + "/images/logo.png" } : {}) };
 function offsetFor(n) {
   const d = new Date(Date.UTC(n.y, n.mo - 1, n.d, 12));
   const part = new Intl.DateTimeFormat("en", { timeZone: "Europe/Paris", timeZoneName: "longOffset" }).formatToParts(d).find((p) => p.type === "timeZoneName").value;
@@ -160,7 +160,8 @@ ${home.local_text ? section(`<h2>${esc(home.local_title || "")}</h2>${paras(home
     + section(`<span class="eyebrow">Expérimenter</span><h2>${esc(ateliers.lab_title)}</h2><p class="lead lead--light">${esc(ateliers.lab_text)}</p>${ateliers.lab_details ? `<p class="lead lead--light">${esc(ateliers.lab_details)}</p>` : ""}`, "deep")
     + faqSection(faq.ateliers_title, faq.ateliers, "paper")
     + section(`<h2>S'inscrire</h2><p class="lead">${esc(ateliers.register_text)}</p>${ateliers.register_details ? `<p class="lead">${esc(ateliers.register_details)}</p>` : ""}<p><a class="btn btn--primary" href="${esc(mailto("Inscription aux ateliers d'improvisation", "Bonjour,\n\nJe souhaite m'inscrire à l'atelier (improvisation débutants / avancés, théâtre enfants) :\n\nNom et prénom :\nTéléphone :\nUn mot sur vous (facultatif) :\n"))}">Écrire pour s'inscrire</a></p><p class="small">Ou directement à ${esc(mail)}</p>`, "white", "inscription");
-  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre classique pour enfants.", cur: "Ateliers", body, jsonld: [faqLD(faq.ateliers)] });
+  const courseLD = (g, withPrice) => ({ "@context": "https://schema.org", "@type": "Course", name: `Atelier d'improvisation théâtrale, groupe ${g.name.toLowerCase()}`, description: [g.subtitle, ...(g.points || [])].filter(Boolean).join(". ") + ".", provider: { "@type": "PerformingGroup", name: site.name, ...(BASE ? { url: BASE } : {}) }, inLanguage: "fr", hasCourseInstance: { "@type": "CourseInstance", courseMode: "onsite", courseWorkload: "P1W", location: { "@type": "Place", name: "Maison des associations", address: { "@type": "PostalAddress", addressLocality: "Villennes-sur-Seine", postalCode: "78670", addressCountry: "FR" } }, description: (g.infos || []).join(" ; ") }, ...(withPrice && /\d+\s*€/.test(ateliers.register_details || "") ? { offers: { "@type": "Offer", category: "Cotisation annuelle", price: (ateliers.register_details.match(/(\d+)\s*€/) || [])[1], priceCurrency: "EUR" } } : {}) });
+  pages.push({ file: "ateliers.html", title: "Ateliers d'improvisation à Villennes-sur-Seine", desc: "Cours et ateliers d'improvisation théâtrale à Villennes-sur-Seine (Yvelines) : improvisation pour débutants et avancés, et théâtre classique pour enfants.", cur: "Ateliers", body, jsonld: [faqLD(faq.ateliers), ...(ateliers.groups || []).map((g) => courseLD(g, true))] });
 }
 
 // ---------- SPECTACLES
@@ -241,5 +242,26 @@ const urls = ["/", "/ateliers", "/spectacles", ...SPEC_URLS, "/association", "/m
 if (BASE) {
   fs.writeFileSync(path.join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${BASE}${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 }
-fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /admin/\n${BASE ? `Sitemap: ${BASE}/sitemap.xml\n` : ""}`);
+const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot"];
+fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /admin/\n\n${AI_BOTS.map((b) => `User-agent: ${b}\nAllow: /\nDisallow: /admin/\n`).join("\n")}\n${BASE ? `Sitemap: ${BASE}/sitemap.xml\n` : ""}`);
+if (BASE) {
+  const L = [];
+  L.push(`# ${site.name}`, "", `> ${site.seo_description}`, "");
+  L.push("## L'essentiel", "");
+  L.push(`- Type : association et troupe d'improvisation théâtrale, Villennes-sur-Seine (78670), Yvelines, Île-de-France.`);
+  L.push(`- Spectacles : cabarets, matchs et spectacles longs, à la ${site.venue}.`);
+  for (const g of ateliers.groups || []) L.push(`- Atelier d'improvisation ${g.name.toLowerCase()} : ${(g.infos || []).join(" ; ")}.`);
+  if (ateliers.kids) L.push(`- ${ateliers.kids.name} (théâtre, ${ateliers.kids.subtitle.replace(/^Coach /, "coach ")}) : ${(ateliers.kids.infos || []).join(" ; ")}.`);
+  if (ateliers.register_details) L.push(`- Tarif des ateliers : ${ateliers.register_details}`);
+  if (nd && isUpcoming) L.push(`- Prochain spectacle : ${nextEv.title}, ${nd.label} à ${nd.time}, ${nextEv.venue}${nextEv.price_label ? ", " + nextEv.price_label : ""}.`);
+  L.push(`- Contact et réservations : ${mail} (réservations et inscriptions par e-mail).`, "", "## Pages", "");
+  L.push(`- [Accueil](${BASE}/) : présentation, prochain spectacle, offres adultes et enfants/ados`);
+  L.push(`- [Ateliers](${BASE}/ateliers) : horaires, contenu, tarif, inscription, questions fréquentes`);
+  L.push(`- [Spectacles](${BASE}/spectacles) : formats, affiches, réservation, questions fréquentes`);
+  for (const sp of spotlights) L.push(`- [${sp.title}](${BASE}/spectacles/${sp.id})`);
+  L.push(`- [L'association](${BASE}/association) : histoire, valeurs, équipe`, "", "## Liens", "");
+  if (site.instagram) L.push(`- Instagram : ${site.instagram}`);
+  if (site.facebook) L.push(`- Facebook : ${site.facebook}`);
+  fs.writeFileSync(path.join(DIST, "llms.txt"), L.join("\n") + "\n");
+}
 console.log(`Site généré : ${pages.length} pages dans dist/ (prochain spectacle ${isUpcoming ? "affiché" : "non affiché"})`);
