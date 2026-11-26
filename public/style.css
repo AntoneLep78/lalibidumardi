@@ -19,7 +19,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--pinkl);outline-offs
 .btn--sm{padding:10px 20px;font-size:14px;text-transform:uppercase;letter-spacing:.05em}
 .btn--lg{font-size:17px;padding:18px 32px}
 /* en-tête */
-.header{background:var(--ink)}
+.header{background:var(--ink);position:sticky;top:0;z-index:40;transition:transform .25s ease}
+.header.is-hidden{transform:translateY(-100%)}
+.totop{position:fixed;right:16px;bottom:20px;z-index:40;border:0;border-radius:999px;padding:12px 18px;background:var(--ink);color:#fff;font:800 14px/1 var(--disp);letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 20px rgba(10,20,38,.35);cursor:pointer}
+.totop:hover{background:var(--pink)}
+.totop[hidden]{display:none}
 .header__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:12px;padding-bottom:12px}
 .header__logo img{height:64px;width:auto}
 .nav{display:flex;flex-wrap:wrap;gap:8px 28px}

@@ -177,3 +177,30 @@
   if (document.readyState === "complete") go();
   else window.addEventListener("load", go);
 })();
+
+/* Barre de nav : se cache en descendant, reapparait des qu'on remonte. Bouton Top. */
+(function () {
+  var header = document.querySelector(".header");
+  var top = document.querySelector(".totop");
+  var lastY = window.pageYOffset || 0, ticking = false;
+  if (top) top.addEventListener("click", function () {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+  var update = function () {
+    ticking = false;
+    var y = Math.max(0, window.pageYOffset || 0), dy = y - lastY;
+    if (header) {
+      var h = header.offsetHeight || 80;
+      if (header.classList.contains("is-open") || y <= h) header.classList.remove("is-hidden");
+      else if (dy > 6) header.classList.add("is-hidden");
+      else if (dy < -6) header.classList.remove("is-hidden");
+    }
+    if (top) top.hidden = y < 700;
+    if (Math.abs(dy) > 6 || y < 5) lastY = y;
+  };
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();

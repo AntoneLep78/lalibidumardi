@@ -72,6 +72,7 @@ ${site.gtm_id ? `<div class="consent" id="consent" role="dialog" aria-modal="fal
 <div class="wrap consent__in"><div class="consent__txt"><strong id="consent-t">Votre vie privée</strong><p>Nous aimerions mesurer l'audience du site (pages vues, provenance) avec Google Analytics, ce qui dépose des cookies. Vous pouvez accepter ou refuser, c'est sans effet sur votre visite. <a href="/mentions-legales#cookies">En savoir plus</a></p></div>
 <div class="consent__btns"><button type="button" class="btn btn--outline btn--sm" data-consent="denied">Refuser</button><button type="button" class="btn btn--primary btn--sm" data-consent="granted">Accepter</button></div></div></div>
 ` : ""}${footer()}
+<button type="button" class="totop" aria-label="Remonter en haut de la page" hidden>↑ Top</button>
 <script src="/main.js" defer></script>
 </body>
 </html>`;
