@@ -80,7 +80,7 @@ ${site.gtm_id ? `<div class="consent" id="consent" role="dialog" aria-modal="fal
 function footer() {
   return `<footer class="footer"><div class="wrap footer__in">
 <div><img src="/images/logo-small.png" alt="${esc(site.name)}" width="105" height="64"><p>Association d'improvisation théâtrale, Villennes-sur-Seine (Yvelines).</p></div>
-<div class="footer__links"><a href="/ateliers">Ateliers</a><a href="/spectacles">Spectacles et réservations</a><a href="/association">L'association et contact</a></div>
+<div class="footer__links"><a href="/ateliers">Ateliers</a><a href="/spectacles">Spectacles et réservations</a><a href="/match-improvisation">Match d'impro</a><a href="/association">L'association et contact</a></div>
 <div class="footer__links"><a href="mailto:${mail}">${esc(mail)}</a>${site.instagram ? `<a href="${esc(site.instagram)}" rel="noopener">Instagram</a>` : ""}${site.facebook ? `<a href="${esc(site.facebook)}" rel="noopener">Facebook</a>` : ""}<a href="/mentions-legales">Mentions légales</a>${site.gtm_id ? `<button type="button" class="linkbtn" data-consent-open>Gérer les cookies</button>` : ""}</div>
 </div></footer>`;
 }
