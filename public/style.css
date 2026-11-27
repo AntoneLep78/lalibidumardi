@@ -90,7 +90,7 @@ h2{font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.01em;color:va
 .gallery--single{display:block}.gallery--single img{max-width:960px;border-radius:12px}
 /* mise en avant d'un spectacle */
 .spot{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
-.spot__img{flex:0 1 340px;width:340px;height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(10,20,38,.25)}
+.spot__fig{flex:0 1 340px;width:340px;max-width:100%;margin:0}.spot__img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(10,20,38,.25)}.spot__note{margin-top:12px;font-size:14px;line-height:1.45;color:var(--muted)}
 .spot__txt{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px}
 .spot__txt p{margin:0;font-size:17px;line-height:1.55;color:var(--muted);max-width:62ch}
 .spot__txt p.small{font-size:16px}

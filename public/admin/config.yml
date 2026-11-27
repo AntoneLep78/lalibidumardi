@@ -142,6 +142,7 @@ collections:
               - {label: "Titre", name: title, widget: string}
               - {label: "Affiche", name: poster, widget: image}
               - {label: "Description de l'affiche", name: poster_alt, widget: string}
+              - {label: "Légende sous l'affiche (facultatif, ex. : affiche du dernier spectacle)", name: poster_note, widget: string, required: false}
               - {label: "Texte (laissez une ligne vide entre deux paragraphes)", name: text, widget: text}
               - {label: "Distribution et infos (**gras** possible)", name: credits, widget: text, required: false}
               - {label: "Afficher la prochaine date du bandeau", name: show_next_date, widget: boolean, default: false}
