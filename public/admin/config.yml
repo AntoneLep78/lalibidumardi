@@ -126,6 +126,7 @@ collections:
             fields:
               - {label: "Titre", name: title, widget: string}
               - {label: "Description", name: text, widget: text}
+              - {label: "Lien vers une page (laissez vide si aucune)", name: link, widget: string, required: false}
       - name: spotlights
         label: "Spectacles mis en avant"
         file: content/spotlights.json

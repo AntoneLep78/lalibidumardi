@@ -6,7 +6,7 @@ const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const read = (n) => JSON.parse(fs.readFileSync(path.join(ROOT, "content", n + ".json"), "utf8"));
 const site = read("site"), nextEv = read("next_event"), home = read("home"), events = read("events").events,
   formats = read("formats").formats, spotlights = read("spotlights").spotlights, galleries = read("galleries").galleries,
-  ateliers = read("ateliers"), asso = read("association"), faq = read("faq");
+  ateliers = read("ateliers"), asso = read("association"), faq = read("faq"), match = read("match");
 
 // ---------- utilitaires
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -182,7 +182,7 @@ ${home.local_text ? section(`<h2>${esc(home.local_title || "")}</h2>${paras(home
   const rest = galleries.filter((g) => !used.has(g.id)).map(gsec).join("");
   const body = pagehead("Spectacles et réservations", "Cabarets, matchs et spectacles longs, à la Salle des Arts de Villennes-sur-Seine. Chaque représentation est unique.")
     + strip()
-    + section(`<h2>Nos formats</h2><div class="cards cards--3">${formats.map((f) => `<div class="card"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("")}</div>`, "paper")
+    + section(`<h2>Nos formats</h2><div class="cards cards--3">${formats.map((f) => f.link ? `<a class="card card--link" href="${esc(f.link)}"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p><span class="choice__go">En savoir plus →</span></a>` : `<div class="card"><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div>`).join("")}</div>`, "paper")
     + matchStrip()
     + spotHtml + rest
     + section(`<h2>Nos soirées en affiches</h2><div class="posters">${events.map(poster).join("")}</div>`, "white", "affiches")
@@ -212,6 +212,21 @@ ${home.local_text ? section(`<h2>${esc(home.local_title || "")}</h2>${paras(home
   }
 }
 
+// ---------- MATCH D'IMPRO
+{
+  const chal = mailto("Match d'improvisation : proposition de rencontre", "Bonjour,\n\nNous sommes une troupe d'improvisation et aimerions vous défier en match.\n\nNom de la troupe :\nVille :\nNombre de joueurs :\nDates possibles :\n");
+  const g = GAL[match.last_gallery];
+  const body = pagehead(match.h1, match.sub)
+    + strip()
+    + section(`<h2>${esc(match.how_title)}</h2>${paras(match.how_text).replace(/<p>/g, '<p class="lead">')}<div class="cards cards--3">${match.points.map((c) => `<div class="card"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`).join("")}</div>`, "white")
+    + section(`<h2>${esc(match.last_title)}</h2><p class="lead">${esc(match.last_text)}</p>${g ? gallery(g) : ""}<p><a class="spot__more" href="${esc(match.last_link)}">${esc(match.last_cta)} →</a></p>`, "paper")
+    + section(`<div class="reserve"><div><h2>${esc(match.challenge_title)}</h2><p class="lead lead--light">${esc(match.challenge_text)}</p></div><a class="btn btn--primary" href="${esc(chal)}">${esc(match.challenge_cta)}</a></div>`, "deep")
+    + section(`<h2>${esc(match.train_title)}</h2><p class="lead">${esc(match.train_text)}</p><p><a class="spot__more" href="${esc(match.train_link)}">${esc(match.train_cta)} →</a></p>`, "white")
+    + faqSection(match.faq_title, match.faq, "paper");
+  const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: BASE + "/" }, { "@type": "ListItem", position: 2, name: "Match d'impro", item: BASE + "/match-improvisation" }] };
+  pages.push({ file: "match-improvisation.html", title: match.seo_title, desc: match.seo_description, cur: "Match d'impro", body, ogImage: g ? g.photos[0] : undefined, jsonld: [BASE && crumbs, faqLD(match.faq)].filter(Boolean) });
+}
+
 // ---------- ASSOCIATION
 {
   const team = (asso.team || []).map((m) => `<div class="member">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">` : ""}<strong>${esc(m.name)}</strong><span>${esc(m.role || "")}</span></div>`).join("");
@@ -238,7 +253,7 @@ const DIST = path.join(ROOT, "dist");
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.cpSync(path.join(ROOT, "public"), DIST, { recursive: true });
 for (const p of pages) { const out = path.join(DIST, p.file); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, layout(p)); }
-const urls = ["/", "/ateliers", "/spectacles", ...SPEC_URLS, "/association", "/mentions-legales"];
+const urls = ["/", "/ateliers", "/spectacles", ...SPEC_URLS, "/match-improvisation", "/association", "/mentions-legales"];
 if (BASE) {
   fs.writeFileSync(path.join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${BASE}${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 }
@@ -259,6 +274,7 @@ if (BASE) {
   L.push(`- [Ateliers](${BASE}/ateliers) : horaires, contenu, tarif, inscription, questions fréquentes`);
   L.push(`- [Spectacles](${BASE}/spectacles) : formats, affiches, réservation, questions fréquentes`);
   for (const sp of spotlights) L.push(`- [${sp.title}](${BASE}/spectacles/${sp.id})`);
+  L.push(`- [Match d'impro](${BASE}/match-improvisation) : match d'improvisation (ligue d'impro), dernier match, défier la troupe, questions fréquentes`);
   L.push(`- [L'association](${BASE}/association) : histoire, valeurs, équipe`, "", "## Liens", "");
   if (site.instagram) L.push(`- Instagram : ${site.instagram}`);
   if (site.facebook) L.push(`- Facebook : ${site.facebook}`);
